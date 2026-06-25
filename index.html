@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debojyoti Barat · Video Editor, UI/UX Designer & AI Multimedia Specialist</title>
+<meta name="description" content="Senior Multimedia Specialist with 7+ years across video editing, UI/UX design, and AI-assisted production. Based in Kolkata, available remotely.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --amber: #EF9F27;
+    --amber-dark: #BA7517;
+    --amber-light: #FAEEDA;
+    --dark: #111110;
+    --mid: #2C2C2A;
+    --muted: #888780;
+    --surface: #F7F6F3;
+    --white: #ffffff;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--white);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--amber); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-cta {
+    background: var(--dark) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-size: 0.8rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--amber) !important; color: var(--dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1.5px;
+    background: var(--amber);
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    max-width: 900px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--dark);
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--amber); color: var(--dark); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--border);
+    color: var(--dark);
+    padding: 0.875rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-1px); }
+  .hero-ticker {
+    margin-top: 5rem;
+    overflow: hidden;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0.75rem 0;
+  }
+  .ticker-inner {
+    display: flex;
+    gap: 3rem;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .ticker-item span { color: var(--amber); margin-right: 3rem; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  .about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .stat {
+    padding: 1.5rem;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--amber); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .skill-card {
+    padding: 2rem;
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    background: var(--white);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--amber); transform: translateY(-3px); }
+  .skill-icon {
+    width: 44px; height: 44px;
+    background: var(--amber-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+  }
+  .skill-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .skill-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    background: var(--surface);
+    color: var(--mid);
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  /* EXPERIENCE */
+  .experience { background: var(--surface); }
+  .timeline { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1px 1fr;
+    gap: 0 2rem;
+    padding-bottom: 3rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .tl-date {
+    text-align: right;
+    padding-top: 0.15rem;
+  }
+  .tl-date span { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+  .tl-dot-col { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot {
+    width: 10px; height: 10px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+  }
+  .tl-line {
+    flex: 1;
+    width: 1px;
+    background: var(--border);
+    margin-top: 4px;
+  }
+  .tl-content { padding-bottom: 0.5rem; }
+  .tl-role { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .tl-company { font-size: 0.85rem; color: var(--amber-dark); font-weight: 500; margin-bottom: 0.75rem; }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 0.875rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  .tl-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+  }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .cert-card {
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--amber); }
+  .cert-badge {
+    width: 36px; height: 36px;
+    background: var(--amber-light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .cert-info { min-width: 0; }
+  .cert-name { font-size: 0.875rem; font-weight: 500; color: var(--dark); line-height: 1.4; }
+  .cert-issuer { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* AI TOOLS */
+  .ai { background: var(--dark); }
+  .ai .section-title { color: var(--white); }
+  .ai .section-label { color: var(--amber); }
+  .ai-sub { color: var(--muted); max-width: 520px; margin-bottom: 3rem; font-size: 1rem; }
+  .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+  .ai-tool {
+    padding: 1.25rem;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ai-tool:hover { border-color: var(--amber); background: rgba(239,159,39,0.05); }
+  .ai-tool-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .ai-tool-name { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+  .ai-tool-cat { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+
+  /* CONTACT */
+  .contact-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-inner .section-label { justify-content: center; display: flex; }
+  .contact-inner .section-title { text-align: center; }
+  .contact-sub { color: var(--muted); margin-bottom: 3rem; font-size: 1rem; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2.5rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--dark);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--amber); color: var(--amber); }
+  .contact-link svg { width: 16px; height: 16px; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero { padding-top: 6rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline-item { grid-template-columns: 0 1px 1fr; }
+    .tl-date { display: none; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Debojyoti<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certs</a>
+    <a href="#contact" class="nav-cta">Let's work →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-eyebrow">Kolkata · Available for Remote Work</div>
+  <h1>Video. Design.<br><em>AI.</em> All three.</h1>
+  <p class="hero-sub">Senior Multimedia Specialist with 7+ years across video editing, UI/UX design, and generative AI production. I build content that performs.</p>
+  <div class="hero-actions">
+    <a href="#experience" class="btn-primary">View My Work</a>
+    <a href="mailto:debojyotib.cmi@gmail.com" class="btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">Video Editing <span>✦</span></span>
+      <span class="ticker-item">UI/UX Design <span>✦</span></span>
+      <span class="ticker-item">Generative AI <span>✦</span></span>
+      <span class="ticker-item">Cinematography <span>✦</span></span>
+      <span class="ticker-item">Prompt Engineering <span>✦</span></span>
+      <span class="ticker-item">Motion Graphics <span>✦</span></span>
+      <span class="ticker-item">Brand Design <span>✦</span></span>
+      <span class="ticker-item">E-learning Production <span>✦</span></span>
+      <span class="ticker-item">Video Editing <span>✦</span></span>
+      <span class="ticker-item">UI/UX Design <span>✦</span></span>
+      <span class="ticker-item">Generative AI <span>✦</span></span>
+      <span class="ticker-item">Cinematography <span>✦</span></span>
+      <span class="ticker-item">Prompt Engineering <span>✦</span></span>
+      <span class="ticker-item">Motion Graphics <span>✦</span></span>
+      <span class="ticker-item">Brand Design <span>✦</span></span>
+      <span class="ticker-item">E-learning Production <span>✦</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Results-driven.<br>Future-proof.</h2>
+      <p>Results-driven Multimedia Specialist with over 7 years spanning Videography, Video Editing, UI/UX, and Graphic Design. Adept at collaborating cross-functionally to solve complex challenges and accelerate business growth.</p>
+      <p>Recently expanded capabilities into Generative AI and comprehensive User Experience design — ensuring future-proof, accessible, and highly engaging digital products for diverse clients.</p>
+      <p>From editing full Udemy courses to leading digital multimedia for a pan-India India Post museum project, I work where design meets strategy.</p>
+      <a href="mailto:debojyotib.cmi@gmail.com" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Say hello →</a>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">7<span>+</span></div>
+          <div class="stat-label">Years of experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Core disciplines</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10<span>+</span></div>
+          <div class="stat-label">AI tools in pipeline</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">9</div>
+          <div class="stat-label">Certifications earned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I do</div>
+  <h2 class="section-title">Four disciplines,<br>one goal</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🎬</div>
+      <h3>Video Editing</h3>
+      <p>End-to-end post-production for long-form content, Udemy courses, 2D animations, and promotional videos. Story-first cuts built for retention.</p>
+      <div class="skill-tags">
+        <span class="tag">Premiere Pro</span>
+        <span class="tag">Sound Design</span>
+        <span class="tag">2D Animation</span>
+        <span class="tag">Multi-camera</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <h3>UI/UX Design</h3>
+      <p>User research, wireframing, and high-fidelity prototypes. Building digital interfaces that are accessible, intuitive, and conversion-focused.</p>
+      <div class="skill-tags">
+        <span class="tag">Figma</span>
+        <span class="tag">UX Research</span>
+        <span class="tag">Prototyping</span>
+        <span class="tag">User Testing</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>Generative AI</h3>
+      <p>Applying AI capabilities beyond simple chatbots — prompt engineering, generative video/voice, and AI-assisted content workflows at scale.</p>
+      <div class="skill-tags">
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Gen AI Video</span>
+        <span class="tag">ElevenLabs</span>
+        <span class="tag">Google AI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <h3>Graphic Design</h3>
+      <p>Creating compelling brand assets — brochures, magazines, client graphics, and e-commerce creatives where design answers to business numbers.</p>
+      <div class="skill-tags">
+        <span class="tag">Photoshop</span>
+        <span class="tag">Canva</span>
+        <span class="tag">Branding</span>
+        <span class="tag">E-commerce</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📷</div>
+      <h3>Cinematography</h3>
+      <p>Professional multi-camera shoots for podcasts, e-learning platforms, product shoots, and live broadcast operations for dynamic content delivery.</p>
+      <div class="skill-tags">
+        <span class="tag">Cinematography</span>
+        <span class="tag">Photography</span>
+        <span class="tag">Live Broadcast</span>
+        <span class="tag">Lighting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📣</div>
+      <h3>Content Strategy</h3>
+      <p>Strategizing content based on marketing requirements, driving engagement through social media reels, targeted ads, and institutional campaigns.</p>
+      <div class="skill-tags">
+        <span class="tag">Social Reels</span>
+        <span class="tag">Ads Creative</span>
+        <span class="tag">Engagement</span>
+        <span class="tag">Brand Voice</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Work experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="tl-date"><span>2023 – Present</span></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-role">Senior Multimedia Specialist</div>
+        <div class="tl-company">IEMA Research & Development Pvt. Ltd.</div>
+        <ul class="tl-bullets">
+          <li>Executing end-to-end multimedia production, encompassing content and product shoots, plus comprehensive video editing.</li>
+          <li>Directing and producing a wide variety of video formats including promotional content, 2D animations, and long-form videos.</li>
+          <li>Designing compelling brand assets — brochures, magazines, client graphics, and intuitive UI/UX designs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date"><span>2022 – 2023</span></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-role">Senior Video Editor & Graphic Designer</div>
+        <div class="tl-company">Pathfinder Educational Centre LLP</div>
+        <ul class="tl-bullets">
+          <li>Supervised all video content pipelines and led a creative team to execute high-quality digital assets.</li>
+          <li>Executed professional multi-camera shoots tailored for podcasts and e-learning platforms.</li>
+          <li>Strategized content for marketing requirements, driving engagement through social media reels and targeted ads.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date"><span>2019 – 2020</span></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-role">Video Editor & Broadcasting</div>
+        <div class="tl-company">Institute of Engineering & Management</div>
+        <ul class="tl-bullets">
+          <li>Managed live broadcast operations for dynamic content delivery.</li>
+          <li>Filmed and edited educational and motivational video content to drive institutional engagement.</li>
+          <li>Designed promotional creatives and posters to support marketing and event outreach.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date"><span>Project</span></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line" style="display:none"></div></div>
+      <div class="tl-content">
+        <div class="tl-role">Digital Multimedia Specialist (Museum Project)</div>
+        <div class="tl-company">India Post · New Delhi</div>
+        <ul class="tl-bullets">
+          <li>Directed and developed digital multimedia and interactive components for the India Post museum in Delhi.</li>
+          <li>Produced interactive video presentations modernising historical exhibits and enhancing the educational experience.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section class="ai" id="ai">
+  <div class="section-label">AI edge</div>
+  <h2 class="section-title">A generative toolchain<br>most creatives don't have</h2>
+  <p class="ai-sub">AI sits inside the daily pipeline as a named tool with a specific job — not a buzzword. Generation gets a project to first draft fast; craft stays human.</p>
+  <div class="ai-grid">
+    <div class="ai-tool">
+      <div class="ai-tool-icon">🎞️</div>
+      <div class="ai-tool-name">Generative AI</div>
+      <div class="ai-tool-cat">Video & Image</div>
+    </div>
+    <div class="ai-tool">
+      <div class="ai-tool-icon">🎙️</div>
+      <div class="ai-tool-name">ElevenLabs</div>
+      <div class="ai-tool-cat">Audio · Voice</div>
+    </div>
+    <div class="ai-tool">
+      <div class="ai-tool-icon">💬</div>
+      <div class="ai-tool-name">Prompt Engineering</div>
+      <div class="ai-tool-cat">Workflow · Scripting</div>
+    </div>
+    <div class="ai-tool">
+      <div class="ai-tool-icon">🧠</div>
+      <div class="ai-tool-name">Claude · Gemini</div>
+      <div class="ai-tool-cat">Research · Planning</div>
+    </div>
+    <div class="ai-tool">
+      <div class="ai-tool-icon">📊</div>
+      <div class="ai-tool-name">Napkin AI</div>
+      <div class="ai-tool-cat">Diagrams · Visual</div>
+    </div>
+    <div class="ai-tool">
+      <div class="ai-tool-icon">🖼️</div>
+      <div class="ai-tool-name">Image Gen</div>
+      <div class="ai-tool-cat">Assets · Thumbnails</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-badge">🎓</div>
+      <div class="cert-info">
+        <div class="cert-name">Google UX Design Professional Certificate</div>
+        <div class="cert-issuer">Google · Apr 2026</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">🖥️</div>
+      <div class="cert-info">
+        <div class="cert-name">User Interface Design and Prototyping</div>
+        <div class="cert-issuer">Microsoft · Aug 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">📐</div>
+      <div class="cert-info">
+        <div class="cert-name">Fundamentals of UI/UX Design</div>
+        <div class="cert-issuer">Microsoft · Oct 2024</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">✏️</div>
+      <div class="cert-info">
+        <div class="cert-name">Designing for User Experience</div>
+        <div class="cert-issuer">Microsoft · Oct 2024</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">🤖</div>
+      <div class="cert-info">
+        <div class="cert-name">Generative AI: Prompt Engineering Basics</div>
+        <div class="cert-issuer">IBM · Aug 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">☁️</div>
+      <div class="cert-info">
+        <div class="cert-name">Gen AI: Beyond the Chatbot</div>
+        <div class="cert-issuer">Google Cloud · Aug 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">🔍</div>
+      <div class="cert-info">
+        <div class="cert-name">Google AI Essentials</div>
+        <div class="cert-issuer">Google · Sep 2024</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">🏛️</div>
+      <div class="cert-info">
+        <div class="cert-name">Ethical Leadership Through Giving Voice to Values</div>
+        <div class="cert-issuer">University of Virginia</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">📸</div>
+      <div class="cert-info">
+        <div class="cert-name">Photography & Post-Production Series (4 Courses + Capstone)</div>
+        <div class="cert-issuer">Michigan State University</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Got a project?<br>Let's talk.</h2>
+    <p class="contact-sub">Kolkata / Remote · Available immediately. Reach out directly — no forms, no waiting.</p>
+    <div class="contact-links">
+      <a href="mailto:debojyotib.cmi@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        debojyotib.cmi@gmail.com
+      </a>
+      <a href="tel:+916289037596" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .98h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+        +91 62890 37596
+      </a>
+      <a href="https://linkedin.com/in/debojyoti-barat" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Debojyoti Barat · Multimedia Specialist</span>
+  <span>Kolkata, West Bengal · India</span>
+</footer>
+
+</body>
+</html>
