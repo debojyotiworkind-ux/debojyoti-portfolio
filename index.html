@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080807;--bg2:#0F0F0E;--bg3:#161615;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.10);--text:#F2EFE8;--text2:#C8C4BB;--muted:#7A7770;--muted2:#52504C;--gold:#C8930A;--gold2:#E5AB1A;--gold-dim:rgba(200,147,10,0.08);--f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--bg:#080807;--bg2:#0F0F0E;--bg3:#161615;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.10);--text:#F2EFE8;--text2:#C8C4BB;--muted:#7A7770;--muted2:#52504C;--gold:#C8930A;--gold2:#E5AB1A;--f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--f-sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -33,11 +33,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;display:flex;ali
 .hero-ctas{display:flex;gap:.75rem}
 .btn-p{background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;font-weight:500;transition:background .3s,transform .2s}
 .btn-p:hover{background:var(--gold2);transform:translateY(-1px)}
-.btn-g{border:1px solid var(--border2);color:var(--muted);font-family:var(--f-mono);font-size:.65rem;letter-spacing Ram:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;transition:border-color .3s,color .3s}
+.btn-g{border:1px solid var(--border2);color:var(--muted);font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;transition:border-color .3s,color .3s}
 .btn-g:hover{border-color:var(--gold);color:var(--gold)}
-.hero-portrait{position:relative;opacity:0;transform:translateY(30px);animation:fadeUp 1.6s var(--ease) forwards;animation-delay:0.3s}
-.portrait-outer{position:relative;width:340px;height:440px}
-.portrait-border{position:absolute;inset:-10px;border:1px solid rgba(200,147,10,0.2);border-radius:2px}
+.hero-portrait{position:relative;opacity:0;transform:translateY(30px);animation:fadeUp 1.6s var(--ease) forwards;animation-delay:0.3s;width:340px;height:440px}
+.portrait-border{position:absolute;inset:-10px;border:1px solid rgba(200,147,10,0.2);border-radius:2px;z-index:2}
 .portrait-img{width:100%;height:100%;object-fit:cover;border-radius:2px;background:#161615;filter:grayscale(15%) contrast(1.02)}
 .stats-bar{border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(5,1fr);background:var(--bg2)}
 .stat-cell{padding:1.75rem 1rem;border-right:1px solid var(--border);text-align:center}
@@ -81,7 +80,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;display:flex;ali
     <div class="hero-portrait">
       <div class="portrait-outer">
         <div class="portrait-border"></div>
-        <img src="assets/hero.jpg" alt="Debojyoti Barat" class="portrait-img" onerror="this.style.display='none'; this.parentNode.style.background='#161615'">
+        <img src="https://drive.google.com/uc?export=view&id=1Eh_UtCElwvVWcYhJ2-i9rzLh--yMDmJU" alt="Debojyoti Barat" class="portrait-img" onerror="this.parentNode.style.background='#161615';">
       </div>
     </div>
   </div>
