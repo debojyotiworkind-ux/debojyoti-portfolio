@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Street Emotions — Debojyoti Barat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000000;--border:rgba(255,255,255,0.04);--text:#F5F3EF;--muted:#6B6962;--gold:#A17E30;--f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f-sans);background:var(--bg);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--f-serif);font-size:1.4rem;font-weight:400;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-center{display:flex;align-items:center;height:100%}
+.nav-link{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:0 1.25rem;height:100%;display:flex;align-items:center;border-right:1px solid var(--border)}
+.nav-link:hover{color:var(--text)}
+.gallery-strip{display:flex;flex-wrap:nowrap;overflow-x:auto;height:100vh;padding-top:70px;padding-left:4rem;padding-right:20vw;align-items:center;scrollbar-width:none}
+.gallery-strip::-webkit-scrollbar{display:none}
+.meta-panel{flex:0 0 auto;width:380px;margin-right:8rem}
+.meta-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.meta-title{font-family:var(--f-serif);font-size:3.5rem;font-weight:300;line-height:1.05;margin-bottom:2rem}
+.meta-text{font-size:.9rem;color:var(--muted);line-height:1.7}
+.photo-frame{flex:0 0 auto;height:60vh;aspect-ratio:3/4;margin-right:4rem;background:#141413}
+.photo-img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+@media(max-width:1024px){.gallery-strip{flex-direction:column;overflow-x:hidden;overflow-y:auto;height:auto;padding:100px 1.5rem 4rem}.meta-panel{width:100%;margin-right:0;margin-bottom:4rem}.photo-frame{width:100%;height:auto;aspect-ratio:3/4;margin-right:0;margin-bottom:2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">DB<span>.</span></a>
+  <div class="nav-center">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="works.html" class="nav-link active">Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="experience.html" class="nav-link">Experience</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<div class="gallery-strip">
+  <div class="meta-panel">
+    <span class="meta-label">Collection III</span>
+    <h1 class="meta-title">Temporal<br>Emotions</h1>
+    <p class="meta-text">Investigating how the exact same urban street setting records entirely distinct emotional values, layers, and human shapes across different hours of the day.</p>
+  </div>
+
+  <div class="photo-frame">
+    <img src="assets/street.jpg" alt="Street Emotions Segment 1" class="photo-img" onerror="this.style.display='none'">
+  </div>
+  <div class="photo-frame">
+    <img src="assets/street2.jpg" alt="Street Emotions Segment 2" class="photo-img" onerror="this.style.display='none'">
+  </div>
+</div>
+
+</body>
+</html>
