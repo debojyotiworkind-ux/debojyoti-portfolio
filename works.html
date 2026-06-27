@@ -93,6 +93,18 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 .dropdown-item:last-child{border-bottom:none}
 .dropdown-item:hover{color:var(--gold);background:var(--bg3)}
 .dropdown-item::before{content:"";width:4px;height:4px;background:currentColor;border-radius:50%;flex-shrink:0}
+
+/* MOBILE HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--bg);z-index:199;flex-direction:column;padding:2rem;overflow-y:auto;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-nav-link{font-family:var(--f-mono);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:1.1rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-nav-link:hover,.mobile-nav-link.active{color:var(--gold)}
+.mobile-nav-sub{font-size:.75rem;padding-left:1.5rem}
+.mobile-hire{margin-top:2rem;display:inline-block;background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;text-align:center;font-weight:500}
+@media(max-width:900px){.nav-hamburger{display:flex}}
+
 </style>
 </head>
 <body>
@@ -116,6 +128,30 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
   </div>
   
   <a href="contact.html" class="nav-hire">Hire Me ↗</a>
+
+<button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="works.html" class="mobile-nav-link">Works</a>
+  <a href="photography.html" class="mobile-nav-link">Photography</a>
+  <a href="street.html" class="mobile-nav-link mobile-nav-sub">↳ Street Photography</a>
+  <a href="charak.html" class="mobile-nav-link mobile-nav-sub">↳ Charak — The Festival</a>
+  <a href="varanasi.html" class="mobile-nav-link mobile-nav-sub">↳ Varanasi — The Holy City</a>
+  <a href="design.html" class="mobile-nav-link">Design</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="experience.html" class="mobile-nav-link">Experience</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="mobile-hire">Hire Me ↗</a>
+</div>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+</script>
 </nav>
 
 <div class="page-hero">
@@ -140,7 +176,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
   <div class="works-grid">
 
     <!-- WIDE — AI Storytelling -->
-    <a class="wcard span2" href="https://youtu.be/_N0qlsdW2Ck" target="_blank">
+    <a class="wcard span2" href="https://youtu.be/_N0qlsdW2Ck" target="_blank" data-cat="video-ai">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://i.ytimg.com/vi/_N0qlsdW2Ck/maxresdefault.jpg" alt="AI Storytelling" onerror="this.style.display='none';this.parentNode.querySelector('.wcard-ph').style.display='flex'">
         <div class="wcard-ph" style="display:none;background:linear-gradient(135deg,#0A0A12,#10101E)"><div class="wcard-ph-icon">🎞️</div><div class="wcard-ph-label">AI Storytelling · Multi-Model Pipeline</div></div>
@@ -160,7 +196,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </a>
 
     <!-- Mirror That Dreams -->
-    <a class="wcard" href="https://youtube.com/shorts/WveWA1j7mGQ" target="_blank">
+    <a class="wcard" href="https://youtube.com/shorts/WveWA1j7mGQ" target="_blank" data-cat="video-ai">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://i.ytimg.com/vi/WveWA1j7mGQ/maxresdefault.jpg" alt="Mirror That Dreams" onerror="this.style.display='none';this.parentNode.querySelector('.wcard-ph').style.display='flex'">
         <div class="wcard-ph" style="display:none;background:linear-gradient(135deg,#0A0812,#120A1E)"><div class="wcard-ph-icon">🪞</div><div class="wcard-ph-label">The Mirror That Dreams</div></div>
@@ -180,9 +216,14 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </a>
 
     <!-- Five Mad Men -->
-    <a class="wcard" href="https://www.instagram.com/reel/DZ79WFWpzxh/" target="_blank">
+    <a class="wcard" href="https://www.instagram.com/reel/DZ79WFWpzxh/" target="_blank" data-cat="brand-social">
       <div class="wcard-thumb">
-        <div class="wcard-ph" style="background:linear-gradient(135deg,#1C0808,#2A0E0E)"><div class="wcard-ph-icon">🍸</div><div class="wcard-ph-label">Five Mad Men · Gastropub · Sector V, Kolkata</div></div>
+        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1A0808 0%,#2E1010 50%,#120808 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2rem">
+      <div style="font-size:3rem;letter-spacing:.05em;font-family:serif;color:rgba(232,150,10,0.7);font-weight:300">5MM</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:center">Five Mad Men · Gastropub<br>Sector V, Kolkata</div>
+      <div style="width:40px;height:1px;background:rgba(232,150,10,0.4)"></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(232,150,10,0.5)">Instagram Reel ↗</div>
+    </div>
         <div class="wcard-overlay"><div class="play-wrap"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       </div>
       <div class="wcard-body">
@@ -199,9 +240,9 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </a>
 
     <!-- India Post WIDE -->
-    <div class="wcard span2">
+    <div class="wcard span2" data-cat="institutional">
       <div class="wcard-thumb">
-        <img class="wcard-img" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80&auto=format&fit=crop" alt="India Post Museum" style="filter:brightness(.55) saturate(.5)" onerror="this.style.display='none'">
+        <img class="wcard-img" src="https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=1200&q=80&auto=format&fit=crop" alt="India Post Museum" style="filter:brightness(.5) saturate(.4) sepia(.3)" onerror="this.style.display='none'">
         <div class="wcard-overlay" style="cursor:default"></div>
       </div>
       <div class="wcard-body">
@@ -218,7 +259,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
 
     <!-- UI/UX -->
-    <div class="wcard">
+    <div class="wcard" data-cat="ui-ux">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80&auto=format&fit=crop" alt="UI/UX Design" onerror="this.style.display='none'">
         <div class="wcard-overlay" style="cursor:default"></div>
@@ -237,7 +278,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
 
     <!-- Brand / Print -->
-    <div class="wcard">
+    <div class="wcard" data-cat="graphic-design">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="Brand Design" onerror="this.style.display='none'">
         <div class="wcard-overlay" style="cursor:default"></div>
@@ -256,7 +297,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
 
     <!-- E-learning -->
-    <div class="wcard">
+    <div class="wcard" data-cat="video-ai">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&auto=format&fit=crop" alt="E-learning" onerror="this.style.display='none'">
         <div class="wcard-overlay" style="cursor:default"></div>
@@ -275,7 +316,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
 
     <!-- Podcast / Multi-cam -->
-    <div class="wcard">
+    <div class="wcard" data-cat="video-ai">
       <div class="wcard-thumb">
         <img class="wcard-img" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80&auto=format&fit=crop" alt="Podcast Production" onerror="this.style.display='none'">
         <div class="wcard-overlay" style="cursor:default"></div>
@@ -298,15 +339,35 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 
 <footer>
   <div class="footer-l">Debojyoti <em>Barat</em> · 2026</div>
-  <div class="footer-links"><a href="index.html">Home</a><a href="works.html">Works</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a></div>
+  <div class="footer-links"><a href="index.html">Home</a><a href="works.html">Works</a><a href="photography.html">Photography</a><a href="design.html">Design</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a></div>
   <div class="footer-r">Kolkata · © 2026</div>
 </footer>
 
 <script>
+const filterMap = {
+  'All Work': null,
+  'Video & AI': 'video-ai',
+  'Brand & Social': 'brand-social',
+  'UI / UX': 'ui-ux',
+  'Institutional': 'institutional',
+  'Graphic Design': 'graphic-design'
+};
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
+    const cat = filterMap[this.textContent.trim()];
+    document.querySelectorAll('.wcard').forEach(card => {
+      if (!cat || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    // Fix grid gaps after filter
+    const grid = document.querySelector('.works-grid');
+    if (grid) grid.style.background = cat ? 'transparent' : 'var(--border)';
   });
 });
 </script>
