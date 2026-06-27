@@ -85,6 +85,18 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 .footer-links a:hover{color:var(--gold)}
 .footer-r{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
 @media(max-width:900px){nav{padding:0 1.25rem}.nav-center{display:none}.gallery-hero{padding:6rem 1.5rem 3rem}.gallery-embed,.drive-cta,.series-nav{padding:2rem 1.5rem}.drive-embed{height:420px}.drive-cta{flex-direction:column}.series-nav{flex-direction:column}footer{flex-direction:column;gap:1rem;text-align:center}}
+
+/* MOBILE HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--bg);z-index:199;flex-direction:column;padding:2rem;overflow-y:auto;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-nav-link{font-family:var(--f-mono);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:1.1rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-nav-link:hover,.mobile-nav-link.active{color:var(--gold)}
+.mobile-nav-sub{font-size:.75rem;padding-left:1.5rem}
+.mobile-hire{margin-top:2rem;display:inline-block;background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;text-align:center;font-weight:500}
+@media(max-width:900px){.nav-hamburger{display:flex}}
+
 </style>
 </head>
 <body>
@@ -107,6 +119,30 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
   <a href="contact.html" class="nav-hire">Hire Me ↗</a>
+
+<button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="works.html" class="mobile-nav-link">Works</a>
+  <a href="photography.html" class="mobile-nav-link">Photography</a>
+  <a href="street.html" class="mobile-nav-link mobile-nav-sub">↳ Street Photography</a>
+  <a href="charak.html" class="mobile-nav-link mobile-nav-sub">↳ Charak — The Festival</a>
+  <a href="varanasi.html" class="mobile-nav-link mobile-nav-sub">↳ Varanasi — The Holy City</a>
+  <a href="design.html" class="mobile-nav-link">Design</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="experience.html" class="mobile-nav-link">Experience</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="mobile-hire">Hire Me ↗</a>
+</div>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+</script>
 </nav>
 
 <div class="gallery-hero">
