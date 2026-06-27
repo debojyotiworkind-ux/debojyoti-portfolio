@@ -151,7 +151,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <!-- Street Photography -->
     <a class="series-card" href="street.html">
       <div class="sc-thumb">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#0A0A08 0%,#1A1610 40%,#0C0C0A 100%);display:flex;align-items:center;justify-content:center;font-size:4rem">🏙️</div>
+        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&auto=format&fit=crop" alt="Street Photography" style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.7);transition:filter .5s,transform .6s" class="sc-img">
         <div class="sc-overlay"></div>
         <div class="sc-count">Series 01</div>
       </div>
@@ -169,7 +169,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <!-- Charak -->
     <a class="series-card" href="charak.html">
       <div class="sc-thumb">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#120808 0%,#2A1010 40%,#0E0808 100%);display:flex;align-items:center;justify-content:center;font-size:4rem">🔥</div>
+        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80&auto=format&fit=crop" alt="Charak Festival" style="width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.8);transition:filter .5s,transform .6s" class="sc-img">
         <div class="sc-overlay"></div>
         <div class="sc-count">Series 02</div>
       </div>
@@ -187,7 +187,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <!-- Varanasi -->
     <a class="series-card" href="varanasi.html">
       <div class="sc-thumb">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#0A0808 0%,#1C1208 40%,#0A0A08 100%);display:flex;align-items:center;justify-content:center;font-size:4rem">🪔</div>
+        <img src="https://images.unsplash.com/photo-1561361058-c24e9e8d7813?w=600&q=80&auto=format&fit=crop" alt="Varanasi" style="width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.7);transition:filter .5s,transform .6s" class="sc-img">
         <div class="sc-overlay"></div>
         <div class="sc-count">Series 03</div>
       </div>
