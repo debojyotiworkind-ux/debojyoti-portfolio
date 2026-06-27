@@ -87,7 +87,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;ali
 .iit-meta-val{font-size:.82rem;font-weight:500;color:var(--text2)}
 .iit-right{padding:3rem;background:var(--bg2);display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--border)}
 .iit-embed{width:100%;height:320px;border:1px solid var(--border2);border-radius:2px;overflow:hidden;background:var(--bg3);margin-bottom:1.5rem}
-.iit-embed iframe{width:100%;height:100%;border:none;filter:invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.7)}
+.iit-embed iframe{width:100%;height:100%;border:none;filter:none}
 .iit-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--gold);color:var(--bg);text-decoration:none;padding:.75rem 1.5rem;border-radius:2px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:background .2s}
 .iit-btn:hover{background:var(--gold2)}
 .iit-btn svg{width:14px;height:14px}
@@ -118,6 +118,18 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 
 @media(max-width:1024px){.cat-grid{grid-template-columns:repeat(2,1fr)}.iit-card{grid-template-columns:1fr}}
 @media(max-width:900px){nav{padding:0 1.25rem}.nav-center{display:none}.page-hero{padding:6rem 1.5rem 3rem}.ph-inner{grid-template-columns:1fr}.ph-right-text{display:none}.section-head{padding:3rem 1.5rem 1.5rem}.cat-grid{grid-template-columns:repeat(2,1fr)}.iit-section{padding:2rem 1.5rem}.graphics-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:1rem;text-align:center}}
+
+/* MOBILE HAMBURGER */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--bg);z-index:199;flex-direction:column;padding:2rem;overflow-y:auto;border-top:1px solid var(--border)}
+.mobile-menu.open{display:flex}
+.mobile-nav-link{font-family:var(--f-mono);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:1.1rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-nav-link:hover,.mobile-nav-link.active{color:var(--gold)}
+.mobile-nav-sub{font-size:.75rem;padding-left:1.5rem}
+.mobile-hire{margin-top:2rem;display:inline-block;background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;text-align:center;font-weight:500}
+@media(max-width:900px){.nav-hamburger{display:flex}}
+
 </style>
 </head>
 <body>
@@ -140,6 +152,30 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
   <a href="contact.html" class="nav-hire">Hire Me ↗</a>
+
+<button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="works.html" class="mobile-nav-link">Works</a>
+  <a href="photography.html" class="mobile-nav-link">Photography</a>
+  <a href="street.html" class="mobile-nav-link mobile-nav-sub">↳ Street Photography</a>
+  <a href="charak.html" class="mobile-nav-link mobile-nav-sub">↳ Charak — The Festival</a>
+  <a href="varanasi.html" class="mobile-nav-link mobile-nav-sub">↳ Varanasi — The Holy City</a>
+  <a href="design.html" class="mobile-nav-link">Design</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="experience.html" class="mobile-nav-link">Experience</a>
+  <a href="contact.html" class="mobile-nav-link">Contact</a>
+  <a href="contact.html" class="mobile-hire">Hire Me ↗</a>
+</div>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+</script>
 </nav>
 
 <div class="page-hero">
@@ -195,7 +231,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 
 <div class="cat-grid">
   <a class="cat-card" href="https://drive.google.com/drive/folders/1hEg8Z-YKghvrwZ6F3Swv17iUvy4lqXOk" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#0A0A12,#14141E)"></div><div class="cat-icon">🎬</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">🎬</div></div>
     <div class="cat-body">
       <div class="cat-label">Animation</div>
       <div class="cat-name">2D & 3D Animation</div>
@@ -204,7 +240,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#0A120E,#0E1814)"></div><div class="cat-icon">📣</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">📣</div></div>
     <div class="cat-body">
       <div class="cat-label">Promo Video</div>
       <div class="cat-name">Promo & Brand Videos</div>
@@ -213,7 +249,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#120808,#1E1210)"></div><div class="cat-icon">🌿</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">🌿</div></div>
     <div class="cat-body">
       <div class="cat-label">Lifestyle & Living</div>
       <div class="cat-name">Lifestyle & Living</div>
@@ -222,7 +258,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#08100A,#0C1810)"></div><div class="cat-icon">💼</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">💼</div></div>
     <div class="cat-body">
       <div class="cat-label">Case Study</div>
       <div class="cat-name">Case Study Videos</div>
@@ -231,7 +267,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#080C14,#0C1020)"></div><div class="cat-icon">🚀</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">🚀</div></div>
     <div class="cat-body">
       <div class="cat-label">Science & Space</div>
       <div class="cat-name">Science & Space</div>
@@ -240,7 +276,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#0E0808,#1A0E0C)"></div><div class="cat-icon">✈️</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">✈️</div></div>
     <div class="cat-body">
       <div class="cat-label">Travel & Mystery</div>
       <div class="cat-name">Travel & Mystery</div>
@@ -249,7 +285,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#0A0A08,#161610)"></div><div class="cat-icon">🔤</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">🔤</div></div>
     <div class="cat-body">
       <div class="cat-label">Typography</div>
       <div class="cat-name">Typography Motion</div>
@@ -258,7 +294,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="cat-card" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="cat-thumb"><div class="cat-thumb-bg" style="background:linear-gradient(135deg,#080E12,#0C1418)"></div><div class="cat-icon">💡</div></div>
+    <div class="cat-thumb"><img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=400&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="cat-icon" style="position:relative">💡</div></div>
     <div class="cat-body">
       <div class="cat-label">Whiteboard · Motivation</div>
       <div class="cat-name">Whiteboard & Motivation</div>
@@ -279,7 +315,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 
 <div class="graphics-grid">
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#0A0A0E,#141420)"></div><div class="gcard-icon">🖼️</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">🖼️</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">Thumbnails</div>
       <div class="gcard-name">YouTube Thumbnails</div>
@@ -288,7 +324,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#0A100A,#14180E)"></div><div class="gcard-icon">📄</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">📄</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">Print Design</div>
       <div class="gcard-name">Brochures & Print</div>
@@ -297,7 +333,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#120808,#1E1010)"></div><div class="gcard-icon">📱</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">📱</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">Social Media</div>
       <div class="gcard-name">Social Media Design</div>
@@ -306,7 +342,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#080A10,#0E1018)"></div><div class="gcard-icon">📚</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">📚</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">Books & Editorial</div>
       <div class="gcard-name">Book & Magazine Design</div>
@@ -315,7 +351,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#08100E,#0C1614)"></div><div class="gcard-icon">🖥️</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">🖥️</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">UI / UX</div>
       <div class="gcard-name">UI UX Design</div>
@@ -324,7 +360,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     </div>
   </a>
   <a class="gcard" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank">
-    <div class="gcard-thumb"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#100A08,#181210)"></div><div class="gcard-icon">🏷️</div></div>
+    <div class="gcard-thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.5)" alt=""><div class="gcard-icon" style="position:relative">🏷️</div></div>
     <div class="gcard-body">
       <div class="gcard-cat">Brand Identity</div>
       <div class="gcard-name">Brand & Identity</div>
