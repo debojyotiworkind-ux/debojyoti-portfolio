@@ -5,35 +5,82 @@
 <title>Contact — Debojyoti Barat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080807;--bg2:#0F0F0E;--border:rgba(255,255,255,0.04);--text:#F2EFE8;--muted:#7A7770;--gold:#A17E30;--f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--bg:#080807;--bg2:#0F0F0E;--bg3:#161615;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.10);--text:#F2EFE8;--text2:#C8C4BB;--muted:#7A7770;--muted2:#52504C;--gold:#C8930A;--gold2:#E5AB1A;--gold-dim:rgba(200,147,10,0.10);--gold-line:rgba(200,147,10,0.22);--f-serif:"Cormorant Garamond",Georgia,serif;--f-sans:"Inter",system-ui,sans-serif;--f-mono:"JetBrains Mono",monospace}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--f-sans);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--muted2)}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--f-serif);font-size:1.4rem;font-weight:500;color:var(--text);text-decoration:none}
-.nav-logo span{color:var(--gold)}
+.nav-logo{font-family:var(--f-serif);font-size:1.4rem;font-weight:500;color:var(--text);text-decoration:none;letter-spacing:.02em}
+.nav-logo span{color:var(--gold);font-style:italic}
 .nav-center{display:flex;align-items:center}
-.nav-link{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:0 1.25rem;height:62px;display:flex;align-items:center;border-right:1px solid var(--border)}
+.nav-link{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:0 1.25rem;height:62px;display:flex;align-items:center;border-right:1px solid var(--border);transition:color .2s,background .2s;position:relative}
+.nav-link:first-child{border-left:1px solid var(--border)}
 .nav-link:hover{color:var(--text);background:var(--bg2)}
 .nav-link.active{color:var(--gold)}
-.container{padding:140px 3rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;opacity:0;transform:translateY(20px);animation:fadeIn 1.2s var(--ease) forwards}
-@keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
-.page-h{font-family:var(--f-serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:1;margin-bottom:2rem}
-.page-h em{font-style:italic;color:var(--gold)}
-.contact-desc{font-size:1rem;color:var(--muted);margin-bottom:3rem;max-width:440px}
-.info-row{margin-bottom:2rem}
-.info-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.info-val{font-size:1.25rem;color:var(--text);text-decoration:none;display:inline-block}
-.info-val:hover{color:var(--gold)}
-.form-group{margin-bottom:1.75rem}
-.form-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block}
-.form-input{width:100%;background:var(--bg2);border:1px solid var(--border);padding:1rem;color:var(--text);font-family:var(--f-sans);font-size:.9rem;border-radius:2px;outline:none;transition:border-color .2s}
-.form-input:focus{border-color:var(--gold)}
-textarea.form-input{height:140px;resize:none}
-.btn-submit{background:var(--gold);color:var(--bg);border:none;font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2rem;border-radius:2px;font-weight:500;cursor:pointer;transition:background .2s}
-.btn-submit:hover{background:#E5AB1A}
-@media(max-width:1024px){.container{grid-template-columns:1fr;gap:4rem;padding:100px 1.5rem 4rem}}
+.nav-link.active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
+.nav-hire{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--bg);background:var(--gold);padding:.5rem 1.25rem;border-radius:2px;transition:background .2s}
+.nav-hire:hover{background:var(--gold2)}
+
+.contact-main{flex:1;display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:62px}
+
+/* LEFT — BIG HEADING */
+.contact-left{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.cl-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 80% at 0% 50%,black 20%,transparent 100%)}
+.cl-glow{position:absolute;bottom:10%;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(200,147,10,0.05) 0%,transparent 70%);pointer-events:none}
+.cl-top{position:relative;z-index:1}
+.cl-tag{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.cl-tag::before{content:"";width:20px;height:1px;background:var(--gold)}
+.cl-h{font-family:var(--f-serif);font-size:clamp(3.5rem,6vw,7rem);font-weight:300;line-height:.9;letter-spacing:-.02em;color:var(--text)}
+.cl-h em{font-style:italic;color:var(--gold)}
+.cl-bottom{position:relative;z-index:1}
+.cl-desc{font-size:.9rem;color:var(--muted);line-height:1.8;max-width:380px;margin-bottom:2.5rem}
+.avail-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border:1px solid rgba(34,197,94,0.2);border-radius:2px;background:rgba(34,197,94,0.05)}
+.avail-dot{width:6px;height:6px;background:#22C55E;border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,0.7)}
+.avail-text{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#22C55E}
+
+/* RIGHT — CONTACT DETAILS */
+.contact-right{display:flex;flex-direction:column}
+.cr-section{padding:3rem;border-bottom:1px solid var(--border)}
+.cr-section:last-child{border-bottom:none;flex:1}
+.cr-label{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.5rem}
+
+/* CONTACT LINKS */
+.c-link{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--muted);transition:color .2s;group:hover}
+.c-link:last-child{border-bottom:none}
+.c-link:hover{color:var(--text)}
+.c-link:hover .c-link-arr{color:var(--gold)}
+.c-link-icon{width:36px;height:36px;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s}
+.c-link:hover .c-link-icon{border-color:var(--gold-line);background:var(--gold-dim)}
+.c-link-icon svg{width:15px;height:15px}
+.c-link-content{flex:1}
+.c-link-label{font-family:var(--f-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:.2rem}
+.c-link-value{font-size:.88rem;font-weight:400;color:var(--text2)}
+.c-link-arr{font-size:.7rem;color:var(--muted2);transition:color .2s}
+
+/* DOWNLOAD CV */
+.dl-cv{display:flex;align-items:center;gap:1rem;background:var(--gold);color:var(--bg);text-decoration:none;padding:1.1rem 1.5rem;border-radius:2px;font-family:var(--f-mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:background .2s;width:100%}
+.dl-cv:hover{background:var(--gold2)}
+.dl-cv svg{width:16px;height:16px}
+
+/* WHAT I DO */
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:0}
+.service-item{background:var(--bg2);padding:1.25rem;transition:background .2s}
+.service-item:hover{background:var(--bg3)}
+.service-name{font-size:.82rem;font-weight:500;color:var(--text2);margin-bottom:.3rem}
+.service-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
+
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg2)}
+.footer-l{font-family:var(--f-serif);font-size:1rem;color:var(--muted)}
+.footer-l em{font-style:italic;color:var(--gold)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-r{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2)}
+
+@media(max-width:900px){nav{padding:0 1.25rem}.nav-center{display:none}.contact-main{grid-template-columns:1fr}.contact-left{padding:5rem 1.5rem 3rem;border-right:none;border-bottom:1px solid var(--border)}.contact-right .cr-section{padding:2rem 1.5rem}.services-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:1rem;text-align:center}}
 </style>
 </head>
 <body>
@@ -46,43 +93,71 @@ textarea.form-input{height:140px;resize:none}
     <a href="experience.html" class="nav-link">Experience</a>
     <a href="contact.html" class="nav-link active">Contact</a>
   </div>
+  <a href="contact.html" class="nav-hire">Hire Me ↗</a>
 </nav>
 
-<div class="container">
-  <div>
-    <h1 class="page-h">Let's build<br>something <em>together</em></h1>
-    <p class="contact-desc">Whether you have an upcoming production, interaction layout challenge, or system project, reach out below.</p>
-    
-    <div class="info-row">
-      <div class="info-label">Email Address</div>
-      <a href="mailto:debojyotib.cmi@gmail.com" class="info-val">debojyotib.cmi@gmail.com</a>
+<div class="contact-main">
+  <div class="contact-left">
+    <div class="cl-bg"></div>
+    <div class="cl-glow"></div>
+    <div class="cl-top">
+      <div class="cl-tag">Get In Touch</div>
+      <h1 class="cl-h">Let's work<br>together<br><em>well.</em></h1>
     </div>
-    <div class="info-row">
-      <div class="info-label">Digital Network</div>
-      <a href="https://www.linkedin.com/in/debojyoti-barat" target="_blank" class="info-val">LinkedIn Profile ↗</a>
-    </div>
-    <div class="info-row">
-      <div class="info-label">Location parameter</div>
-      <div class="info-val" style="cursor:default">Kolkata, West Bengal · Remote</div>
+    <div class="cl-bottom">
+      <p class="cl-desc">Whether it's a video project, UI/UX engagement, AI-assisted production brief, or brand creative — reach out directly. Fast replies, serious about the work.</p>
+      <div class="avail-pill">
+        <span class="avail-dot"></span>
+        <span class="avail-text">Available for new projects</span>
+      </div>
     </div>
   </div>
-  <div>
-    <form action="#" onsubmit="event.preventDefault(); alert('Message feature active.');">
-      <div class="form-group">
-        <label class="form-label">Full Name</label>
-        <input type="text" class="form-input" required placeholder="John Doe">
+
+  <div class="contact-right">
+    <div class="cr-section">
+      <div class="cr-label">Direct Contact</div>
+      <a href="mailto:debojyotiwork.ind@gmail.com" class="c-link">
+        <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+        <div class="c-link-content"><div class="c-link-label">Email</div><div class="c-link-value">debojyotiwork.ind@gmail.com</div></div>
+        <span class="c-link-arr">↗</span>
+      </a>
+      <a href="tel:+916289037596" class="c-link">
+        <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .98h3a2 2 0 012 1.72c.247.837.52 1.65.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg></div>
+        <div class="c-link-content"><div class="c-link-label">Phone</div><div class="c-link-value">+91 62890 37596</div></div>
+        <span class="c-link-arr">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/debojyoti-barat" target="_blank" class="c-link">
+        <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="c-link-content"><div class="c-link-label">LinkedIn</div><div class="c-link-value">linkedin.com/in/debojyoti-barat</div></div>
+        <span class="c-link-arr">↗</span>
+      </a>
+    </div>
+
+    <div class="cr-section">
+      <div class="cr-label">Resume</div>
+      <a href="Debojyoti-Barat-Resume.pdf" download class="dl-cv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download Full Resume — PDF
+      </a>
+    </div>
+
+    <div class="cr-section">
+      <div class="cr-label">What I take on</div>
+      <div class="services-grid">
+        <div class="service-item"><div class="service-name">Video Production</div><div class="service-desc">Long-form, shorts, brand reels, AI-generated, multi-camera</div></div>
+        <div class="service-item"><div class="service-name">UI/UX Design</div><div class="service-desc">Research, wireframing, Figma prototypes, product design</div></div>
+        <div class="service-item"><div class="service-name">AI Content Pipelines</div><div class="service-desc">Veo 3, Sora, Higgsfield, ElevenLabs, end-to-end delivery</div></div>
+        <div class="service-item"><div class="service-name">Brand & Graphic Design</div><div class="service-desc">Brochures, magazines, campaigns, e-commerce creatives</div></div>
+        <div class="service-item"><div class="service-name">Cinematography</div><div class="service-desc">Shoots, podcasts, events, photography, live broadcast</div></div>
+        <div class="service-item"><div class="service-name">Content Strategy</div><div class="service-desc">Social media, ad creatives, content planning & scheduling</div></div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input type="email" class="form-input" required placeholder="john@example.com">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Project Scope</label>
-        <textarea class="form-input" required placeholder="Tell me about your project..."></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Send Transmission →</button>
-    </form>
+    </div>
   </div>
 </div>
-</body>
-</html>
+
+<footer>
+  <div class="footer-l">Debojyoti <em>Barat</em> · 2026</div>
+  <div class="footer-links"><a href="index.html">Home</a><a href="works.html">Works</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a></div>
+  <div class="footer-r">Kolkata · © 2026</div>
+</footer>
+</body></html>
