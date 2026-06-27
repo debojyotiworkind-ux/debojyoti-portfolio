@@ -97,6 +97,61 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
 .mobile-hire{margin-top:2rem;display:inline-block;background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.75rem;border-radius:2px;text-align:center;font-weight:500}
 @media(max-width:900px){.nav-hamburger{display:flex}}
 
+
+/* CLEAN_NAV_OVERRIDE */
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(8,8,7,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--f-serif);font-size:1.4rem;font-weight:500;color:var(--text);text-decoration:none;letter-spacing:.02em;flex-shrink:0}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-center{display:flex;align-items:center;flex:1;justify-content:center}
+.nav-right{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.nav-link{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:0 1rem;height:62px;display:flex;align-items:center;border-right:1px solid var(--border);transition:color .2s,background .2s;position:relative;white-space:nowrap}
+.nav-link:first-child{border-left:1px solid var(--border)}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+.nav-link.active{color:var(--gold)}
+.nav-link.active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
+/* DROPDOWN */
+.nav-dropdown{position:relative}
+.nav-dropdown-btn{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 1rem;height:62px;display:flex;align-items:center;gap:.4rem;border-right:1px solid var(--border);border-left:1px solid var(--border);cursor:pointer;background:none;border-top:none;border-bottom:none;transition:color .2s,background .2s;position:relative;white-space:nowrap}
+.nav-dropdown-btn:hover,.nav-dropdown:hover .nav-dropdown-btn{color:var(--text);background:rgba(255,255,255,0.03)}
+.nav-dropdown-btn.active{color:var(--gold)}
+.nav-dropdown-btn.active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
+.nav-dropdown-btn svg{width:9px;height:9px;transition:transform .2s}
+.nav-dropdown:hover .nav-dropdown-btn svg{transform:rotate(180deg)}
+.dropdown-menu{position:absolute;top:62px;left:0;min-width:220px;background:var(--bg2);border:1px solid var(--border2);border-top:2px solid var(--gold);display:none;flex-direction:column;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.nav-dropdown:hover .dropdown-menu{display:flex}
+.dropdown-item{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:.875rem 1.25rem;border-bottom:1px solid var(--border);transition:color .2s,background .2s;display:flex;align-items:center;gap:.6rem}
+.dropdown-item:last-child{border-bottom:none}
+.dropdown-item:hover,.dropdown-item.active{color:var(--gold);background:rgba(200,147,10,0.05)}
+.dropdown-item::before{content:"";width:4px;height:4px;background:currentColor;border-radius:50%;flex-shrink:0}
+/* HIRE / HAMBURGER */
+.nav-hire{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--bg);background:var(--gold);padding:.5rem 1.1rem;border-radius:2px;transition:background .2s;white-space:nowrap}
+.nav-hire:hover{background:var(--gold2)}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:.5rem;width:36px;height:36px}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--text);transition:all .3s;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* MOBILE MENU */
+.mobile-menu{position:fixed;top:62px;left:0;right:0;bottom:0;background:var(--bg);z-index:199;display:flex;flex-direction:column;padding:1.5rem;overflow-y:auto;transform:translateX(100%);transition:transform .3s var(--ease);border-top:1px solid var(--border)}
+.mobile-menu.open{transform:translateX(0)}
+.mob-link{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:1rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;transition:color .2s}
+.mob-link:hover,.mob-link.active{color:var(--gold)}
+.mob-link::before{content:"";width:4px;height:4px;background:var(--muted);border-radius:50%;flex-shrink:0;transition:background .2s}
+.mob-link:hover::before,.mob-link.active::before{background:var(--gold)}
+.mob-sub{font-size:.7rem;padding:.7rem 0 .7rem 1rem;color:var(--muted2)}
+.mob-sub::before{width:3px;height:3px}
+.mob-hire{margin-top:1.5rem;display:flex;align-items:center;justify-content:center;background:var(--gold);color:var(--bg);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:1rem;border-radius:2px;font-weight:500}
+/* RESPONSIVE BREAKPOINTS */
+@media(max-width:1100px){.nav-link{padding:0 .75rem;font-size:.58rem}}
+@media(max-width:900px){
+  nav{padding:0 1.25rem}
+  .nav-center{display:none}
+  .nav-hamburger{display:flex}
+  body.menu-open{overflow:hidden}
+}
+
 </style>
 </head>
 <body>
@@ -106,7 +161,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <a href="index.html" class="nav-link">Home</a>
     <a href="works.html" class="nav-link">Works</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-btn">Photography <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
+      <button class="nav-dropdown-btn active">Photography <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="dropdown-menu">
         <a href="street.html" class="dropdown-item active">Street Photography</a>
         <a href="charak.html" class="dropdown-item">Charak — The Festival</a>
@@ -118,31 +173,26 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify
     <a href="experience.html" class="nav-link">Experience</a>
     <a href="contact.html" class="nav-link">Contact</a>
   </div>
-  <a href="contact.html" class="nav-hire">Hire Me ↗</a>
-
-<button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-  <span></span><span></span><span></span>
-</button>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-hire">Hire Me ↗</a>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" class="mobile-nav-link">Home</a>
-  <a href="works.html" class="mobile-nav-link">Works</a>
-  <a href="photography.html" class="mobile-nav-link">Photography</a>
-  <a href="street.html" class="mobile-nav-link mobile-nav-sub">↳ Street Photography</a>
-  <a href="charak.html" class="mobile-nav-link mobile-nav-sub">↳ Charak — The Festival</a>
-  <a href="varanasi.html" class="mobile-nav-link mobile-nav-sub">↳ Varanasi — The Holy City</a>
-  <a href="design.html" class="mobile-nav-link">Design</a>
-  <a href="about.html" class="mobile-nav-link">About</a>
-  <a href="experience.html" class="mobile-nav-link">Experience</a>
-  <a href="contact.html" class="mobile-nav-link">Contact</a>
-  <a href="contact.html" class="mobile-hire">Hire Me ↗</a>
+  <a href="index.html" class="mob-link">Home</a>
+  <a href="works.html" class="mob-link">Works</a>
+  <a href="photography.html" class="mob-link active">Photography</a>
+  <a href="street.html" class="mob-link mob-sub active">↳ Street Photography</a>
+  <a href="charak.html" class="mob-link mob-sub">↳ Charak — The Festival</a>
+  <a href="varanasi.html" class="mob-link mob-sub">↳ Varanasi — The Holy City</a>
+  <a href="design.html" class="mob-link">Design</a>
+  <a href="about.html" class="mob-link">About</a>
+  <a href="experience.html" class="mob-link">Experience</a>
+  <a href="contact.html" class="mob-link">Contact</a>
+  <a href="contact.html" class="mob-hire">Hire Me ↗</a>
 </div>
-<script>
-function toggleMenu(){
-  const m=document.getElementById('mobileMenu');
-  m.classList.toggle('open');
-  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
-}
-</script>
 </nav>
 
 <div class="gallery-hero">
