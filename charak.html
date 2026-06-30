@@ -143,15 +143,44 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   .container{padding:0 1rem}
 }
 
-.drive-wrap{width:100%;height:380px;border:1px solid var(--border2);border-radius:3px;background:var(--dark2);overflow:hidden}
-@media(min-width:768px){.drive-wrap{height:560px}}
-.drive-wrap iframe{width:100%;height:100%;border:none}
-.drive-note{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.04em;color:var(--muted2);margin-top:.8rem;display:flex;align-items:flex-start;gap:.4rem}
+.gal-hero{padding:5.5rem 1.25rem 2.5rem;border-bottom:1px solid var(--border);background:var(--dark2);margin-top:var(--nav-h);position:relative;overflow:hidden}
+@media(min-width:768px){.gal-hero{padding:7rem 2rem 3rem}}
+.gal-back{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;transition:color .2s;border-bottom:1px solid var(--border2);padding-bottom:.15rem}
+.gal-back:hover{color:var(--gold)}
+.gal-meta-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border)}
+.gal-mi label{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:.2rem}
+.gal-mi span{font-size:var(--step--1);color:var(--text2)}
+
+/* MASONRY-STYLE GRID */
+.photo-grid{column-count:1;column-gap:2px;padding:2px}
+@media(min-width:640px){.photo-grid{column-count:2}}
+@media(min-width:1024px){.photo-grid{column-count:3}}
+.photo-item{break-inside:avoid;margin-bottom:2px;position:relative;overflow:hidden;cursor:pointer;background:var(--dark2)}
+.photo-item img{width:100%;display:block;filter:brightness(.92) saturate(.95);transition:filter .4s var(--ease),transform .5s var(--ease)}
+.photo-item:hover img{filter:brightness(1.05) saturate(1.05);transform:scale(1.03)}
+.photo-item-ov{position:absolute;inset:0;background:rgba(10,10,9,0);transition:background .3s;display:flex;align-items:flex-end;padding:1rem;opacity:0}
+.photo-item:hover .photo-item-ov{background:rgba(10,10,9,.25);opacity:1}
+.photo-item-num{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;color:var(--text);background:rgba(10,10,9,.6);padding:.3rem .6rem;border-radius:2px;backdrop-filter:blur(4px)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,7,.97);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(8px)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:1.25rem;right:1.25rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border2);color:var(--text);font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.lightbox-close:hover{background:rgba(255,255,255,.15)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border2);color:var(--text);font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.lightbox-nav:hover{background:rgba(255,255,255,.15)}
+.lightbox-prev{left:1.25rem}
+.lightbox-next{right:1.25rem}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.65rem;letter-spacing:.08em;color:var(--muted);background:rgba(255,255,255,.06);padding:.4rem .9rem;border-radius:100px}
+@media(max-width:640px){.lightbox-nav{width:38px;height:38px;font-size:1.1rem}.lightbox-prev{left:.5rem}.lightbox-next{right:.5rem}}
+
 .drive-cta-bar{display:flex;flex-direction:column;gap:1rem;border-top:1px solid var(--border);padding:1.5rem 1.25rem;background:var(--dark2)}
 @media(min-width:640px){.drive-cta-bar{flex-direction:row;align-items:center;justify-content:space-between;padding:2rem}}
 .dcta-h{font-family:var(--f-serif);font-size:var(--step-2);font-weight:700;color:var(--text);margin-bottom:.4rem}
 .dcta-h em{font-style:italic;color:var(--gold)}
 .dcta-p{font-size:var(--step--1);color:var(--muted);max-width:380px}
+
 .series-nav{display:grid;grid-template-columns:1fr;border-top:1px solid var(--border)}
 @media(min-width:640px){.series-nav{grid-template-columns:repeat(3,1fr)}}
 .sn{padding:1.25rem 1.5rem;background:var(--dark2);text-decoration:none;display:flex;flex-direction:column;gap:.3rem;transition:background .2s;position:relative;border-bottom:1px solid var(--border)}
@@ -196,31 +225,158 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <a href="contact.html" class="mob-cta">Hire Me ↗</a>
 </div>
 
-<div class="page-banner"><div class="pb-grid"></div>
+<div class="gal-hero"><div class="pb-grid"></div>
   <div class="pb-inner">
-    <div class="pb-tag fade-up">Series 02 · Festival · Documentary</div>
-    <h1 class="pb-title fade-up d1" style="font-size:var(--step-7)">Charak —<br><em>The Festival</em></h1>
-    <p class="pb-sub fade-up d2">One of Bengal's most intense religious festivals — captured up close. Devotion, pain, ecstasy, and faith coexist in a single frame.</p>
-    <ol class="breadcrumb"><li><a href="index.html">Home</a></li><li><a href="photography.html">Photography</a></li><li class="active">Charak — The Festival</li></ol>
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border)" class="fade-up d3"><div style="display:flex;flex-direction:column;gap:.2rem"><label style="font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Location</label><span style="font-size:var(--step--1);color:var(--text2)">West Bengal, India</span></div><div style="display:flex;flex-direction:column;gap:.2rem"><label style="font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Event</label><span style="font-size:var(--step--1);color:var(--text2)">Annual Festival</span></div><div style="display:flex;flex-direction:column;gap:.2rem"><label style="font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)">Style</label><span style="font-size:var(--step--1);color:var(--text2)">Festival · Ritual</span></div></div>
+    <a href="photography.html" class="gal-back fade-up">← Back to Photography</a>
+    <div class="pb-tag fade-up d1">Series 02 · Festival · Documentary</div>
+    <h1 class="pb-title fade-up d2" style="font-size:var(--step-7)">Charak —<br><em>The Festival</em></h1>
+    <p class="pb-sub fade-up d3">One of Bengal's most intense religious festivals — captured up close. Devotion, pain, ecstasy, and faith coexist in a single frame. Raw and unfiltered.</p>
+    <div class="gal-meta-row fade-up d3">
+      <div class="gal-mi"><label>Location</label><span>West Bengal, India</span></div>
+      <div class="gal-mi"><label>Event</label><span>Annual Festival</span></div>
+      <div class="gal-mi"><label>Style</label><span>Festival · Ritual · Documentary</span></div>
+      <div class="gal-mi"><label>Photos</label><span>16 Images</span></div>
+    </div>
   </div>
 </div>
-<div class="container section-padding">
-  <div style="font-family:var(--f-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.1rem">Gallery — Series 02 · Festival · Documentary</div>
-  <div class="drive-wrap fade-up">
-    <iframe src="https://drive.google.com/embeddedfolderview?id=12isz9D7QhcQNGhu5NLd5khg7rgJFTdL3#grid" allowfullscreen loading="lazy"></iframe>
+
+<div class="photo-grid">
+  <div class="photo-item" onclick="openLightbox(0)">
+    <img src="images/charak/thumbs/charak-01.jpg" data-full="images/charak/charak-01.jpg" alt="Charak Festival — The leap — devotee swings out over the crowd, saffron robes catching the light" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">01 / 16</span></div>
   </div>
-  <div class="drive-note">ℹ Photos load from Google Drive. Sign in if prompted to view the full gallery.</div>
+  <div class="photo-item" onclick="openLightbox(1)">
+    <img src="images/charak/thumbs/charak-02.jpg" data-full="images/charak/charak-02.jpg" alt="Charak Festival — The street holds its breath — thousands gather for Charak" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">02 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(2)">
+    <img src="images/charak/thumbs/charak-03.jpg" data-full="images/charak/charak-03.jpg" alt="Charak Festival — Offerings in hand, suspended between earth and sky" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">03 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(3)">
+    <img src="images/charak/thumbs/charak-04.jpg" data-full="images/charak/charak-04.jpg" alt="Charak Festival — Sweets scatter as the rope swings wide" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">04 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(4)">
+    <img src="images/charak/thumbs/charak-05.jpg" data-full="images/charak/charak-05.jpg" alt="Charak Festival — Dusk descends — the ritual continues into evening light" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">05 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(5)">
+    <img src="images/charak/thumbs/charak-06.jpg" data-full="images/charak/charak-06.jpg" alt="Charak Festival — Preparation — the ropes are bound with care and ceremony" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">06 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(6)">
+    <img src="images/charak/thumbs/charak-07.jpg" data-full="images/charak/charak-07.jpg" alt="Charak Festival — Vibhuti and rudraksha — the face of devotion" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">07 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(7)">
+    <img src="images/charak/thumbs/charak-08.jpg" data-full="images/charak/charak-08.jpg" alt="Charak Festival — Forehead to wood — a moment of surrender before the swing" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">08 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(8)">
+    <img src="images/charak/thumbs/charak-09.jpg" data-full="images/charak/charak-09.jpg" alt="Charak Festival — Smoke and silence — a devotee in quiet focus" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">09 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(9)">
+    <img src="images/charak/thumbs/charak-10.jpg" data-full="images/charak/charak-10.jpg" alt="Charak Festival — Beads, rings, and the weight of tradition" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">10 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(10)">
+    <img src="images/charak/thumbs/charak-11.jpg" data-full="images/charak/charak-11.jpg" alt="Charak Festival — Hands gripping rope — strength before flight" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">11 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(11)">
+    <img src="images/charak/thumbs/charak-12.jpg" data-full="images/charak/charak-12.jpg" alt="Charak Festival — A glance through the crowd — fleeting, unposed" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">12 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(12)">
+    <img src="images/charak/thumbs/charak-13.jpg" data-full="images/charak/charak-13.jpg" alt="Charak Festival — Contemplation before the ritual begins" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">13 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(13)">
+    <img src="images/charak/thumbs/charak-14.jpg" data-full="images/charak/charak-14.jpg" alt="Charak Festival — Mid-air, surrounded by hundreds of phones and eyes" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">14 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(14)">
+    <img src="images/charak/thumbs/charak-15.jpg" data-full="images/charak/charak-15.jpg" alt="Charak Festival — Two devotees, one platform — the moment before release" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">15 / 16</span></div>
+  </div>
+  <div class="photo-item" onclick="openLightbox(15)">
+    <img src="images/charak/thumbs/charak-16.jpg" data-full="images/charak/charak-16.jpg" alt="Charak Festival — The charak pole itself — wood, rope, and a red flag against the sky" loading="lazy">
+    <div class="photo-item-ov"><span class="photo-item-num">16 / 16</span></div>
+  </div>
 </div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
 <div class="drive-cta-bar">
-  <div><div class="dcta-h">View full <em>Charak</em> gallery</div><p class="dcta-p">Open the complete collection in Google Drive for full-resolution images.</p></div>
-  <a href="https://drive.google.com/drive/folders/12isz9D7QhcQNGhu5NLd5khg7rgJFTdL3" target="_blank" rel="noopener" class="btn-gold">Open in Drive ↗</a>
+  <div><div class="dcta-h">Want to license or print these?</div><p class="dcta-p">Get in touch directly for full-resolution files, prints, or usage licensing.</p></div>
+  <a href="contact.html" class="btn-gold">Get In Touch →</a>
 </div>
+
 <div class="series-nav">
   <a href="street.html" class="sn"><div class="sn-label">← Previous</div><div class="sn-title">Street <em>Photography</em></div></a>
   <div class="sn on"><div class="sn-label">Current</div><div class="sn-title">Charak — <em>The Festival</em></div></div>
   <a href="varanasi.html" class="sn"><div class="sn-label">Next Series →</div><div class="sn-title">Varanasi — <em>The Holy City</em></div></a>
 </div>
+
+<script>
+const photoData = [
+  {src:"images/charak/charak-01.jpg",caption:"The leap — devotee swings out over the crowd, saffron robes catching the light"},
+  {src:"images/charak/charak-02.jpg",caption:"The street holds its breath — thousands gather for Charak"},
+  {src:"images/charak/charak-03.jpg",caption:"Offerings in hand, suspended between earth and sky"},
+  {src:"images/charak/charak-04.jpg",caption:"Sweets scatter as the rope swings wide"},
+  {src:"images/charak/charak-05.jpg",caption:"Dusk descends — the ritual continues into evening light"},
+  {src:"images/charak/charak-06.jpg",caption:"Preparation — the ropes are bound with care and ceremony"},
+  {src:"images/charak/charak-07.jpg",caption:"Vibhuti and rudraksha — the face of devotion"},
+  {src:"images/charak/charak-08.jpg",caption:"Forehead to wood — a moment of surrender before the swing"},
+  {src:"images/charak/charak-09.jpg",caption:"Smoke and silence — a devotee in quiet focus"},
+  {src:"images/charak/charak-10.jpg",caption:"Beads, rings, and the weight of tradition"},
+  {src:"images/charak/charak-11.jpg",caption:"Hands gripping rope — strength before flight"},
+  {src:"images/charak/charak-12.jpg",caption:"A glance through the crowd — fleeting, unposed"},
+  {src:"images/charak/charak-13.jpg",caption:"Contemplation before the ritual begins"},
+  {src:"images/charak/charak-14.jpg",caption:"Mid-air, surrounded by hundreds of phones and eyes"},
+  {src:"images/charak/charak-15.jpg",caption:"Two devotees, one platform — the moment before release"},
+  {src:"images/charak/charak-16.jpg",caption:"The charak pole itself — wood, rope, and a red flag against the sky"}
+];
+let currentIdx = 0;
+
+function openLightbox(idx) {
+  currentIdx = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentIdx = (currentIdx + dir + photoData.length) % photoData.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  const p = photoData[currentIdx];
+  document.getElementById('lightbox-img').src = p.src;
+  document.getElementById('lightbox-img').alt = p.caption;
+  document.getElementById('lightbox-counter').textContent = (currentIdx+1) + ' / ' + photoData.length;
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+</script>
 
 <footer><div class="footer-inner">
   <div class="foot-brand">Debojyoti <em>Barat</em></div>
