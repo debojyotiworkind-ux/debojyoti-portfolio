@@ -2,525 +2,239 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Debojyoti Barat — Video Editor, UI/UX Designer &amp; AI Multimedia Specialist. Kolkata / Remote. Open to full-time &amp; freelance.">
 <title>Design & Video Portfolio — Debojyoti Barat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ── IMPORTS ────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ── TOKENS ─────────────────────────────────────────── */
-:root {
-  /* Backgrounds */
-  --bg:     #080807;
-  --bg2:    #0f0f0e;
-  --bg3:    #181817;
-  --bg4:    #222220;
-  --border: rgba(255,255,255,0.08);
-  --border2:rgba(255,255,255,0.14);
-
-  /* Text — fixed contrast (all meet WCAG AA on --bg) */
-  --text:   #F2EFE8;   /* primary   — 15.4:1 */
-  --text2:  #CEC9C0;   /* secondary — 9.1:1  */
-  --muted:  #A09B91;   /* body copy — 5.2:1 ✓ was #78756E (3.2 ✗) */
-  --muted2: #6E6A62;   /* labels    — 3.8:1  (used large/caps only) */
-  --muted3: #4A4843;   /* dividers/decorative */
-
-  /* Brand */
-  --gold:      #D09A14;
-  --gold2:     #E8B420;
-  --gold-dim:  rgba(208,154,20,0.10);
-  --gold-line: rgba(208,154,20,0.22);
-
-  /* Typography scale — fluid, mobile-first */
-  --step--2: clamp(0.69rem, 0.66rem + 0.14vw, 0.78rem);   /* 11–12.5px */
-  --step--1: clamp(0.83rem, 0.78rem + 0.22vw, 0.94rem);   /* 13.3–15px */
-  --step-0:  clamp(1rem,    0.96rem + 0.2vw,  1.0625rem); /* 16–17px   */
-  --step-1:  clamp(1.13rem, 1.06rem + 0.3vw,  1.25rem);   /* 18–20px   */
-  --step-2:  clamp(1.25rem, 1.13rem + 0.6vw,  1.5rem);    /* 20–24px   */
-  --step-3:  clamp(1.5rem,  1.31rem + 1vw,    2rem);       /* 24–32px   */
-  --step-4:  clamp(1.875rem,1.56rem + 1.6vw,  2.5rem);    /* 30–40px   */
-  --step-5:  clamp(2.25rem, 1.75rem + 2.5vw,  3.5rem);    /* 36–56px   */
-  --step-6:  clamp(2.75rem, 1.9rem  + 4.2vw,  5rem);      /* 44–80px   */
-  --step-7:  clamp(3.5rem,  2rem    + 7vw,    7rem);       /* 56–112px  */
-
-  /* Fonts */
-  --f-serif: 'Cormorant Garamond', Georgia, serif;
-  --f-sans:  'Inter', system-ui, sans-serif;
-  --f-mono:  'JetBrains Mono', monospace;
-
-  /* Motion */
-  --ease: cubic-bezier(0.16,1,0.3,1);
-  --ease-out: cubic-bezier(0,0,0.2,1);
-  --dur-fast: 0.18s;
-  --dur-med:  0.35s;
-  --dur-slow: 0.65s;
-
-  --nav-h: 64px;
-  --r: 3px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#0a0a09;--dark2:#111110;--dark3:#1a1a18;--dark4:#222220;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#f0ede6;--text2:#c8c4bc;--muted:#a09b91;--muted2:#736f68;
+  --gold:#c8930a;--gold2:#e5ab1a;--gold-dim:rgba(200,147,10,.1);--gold-border:rgba(200,147,10,.25);
+  --f-serif:'Playfair Display',Georgia,serif;
+  --f-sans:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:64px;
+  --step--2:clamp(.7rem,.67rem + .15vw,.78rem);
+  --step--1:clamp(.84rem,.8rem + .2vw,.92rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.05rem);
+  --step-1:clamp(1.13rem,1.05rem + .35vw,1.3rem);
+  --step-2:clamp(1.3rem,1.15rem + .6vw,1.65rem);
+  --step-3:clamp(1.6rem,1.35rem + 1vw,2.1rem);
+  --step-4:clamp(1.9rem,1.55rem + 1.5vw,2.6rem);
+  --step-5:clamp(2.3rem,1.8rem + 2.2vw,3.4rem);
+  --step-6:clamp(2.7rem,1.9rem + 3.5vw,4.6rem);
+  --step-7:clamp(3.2rem,2rem + 5.5vw,6.8rem);
 }
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-sans);font-size:var(--step-0);background:var(--dark);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--muted2);border-radius:2px}
+a{text-decoration:none;color:inherit;transition:color .2s}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+@media(min-width:768px){.container{padding:0 2rem}}
+.section-padding{padding:3.5rem 0}
+@media(min-width:768px){.section-padding{padding:5rem 0}}
+.no-padding{padding:0!important}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
-/* ── RESET ──────────────────────────────────────────── */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; font-size:16px; -webkit-text-size-adjust:100%; }
-body {
-  font-family: var(--f-sans);
-  font-size: var(--step-0);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .45s,visibility .45s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-ring{width:38px;height:38px;border:2px solid var(--border2);border-top-color:var(--gold);border-radius:50%;animation:spin .9s linear infinite}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);background:rgba(10,10,9,.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:background .3s,box-shadow .3s}
+header.scrolled{background:rgba(10,10,9,.99);box-shadow:0 2px 24px rgba(0,0,0,.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:1180px;margin:0 auto;padding:0 1.25rem}
+@media(min-width:768px){.nav-inner{padding:0 2rem}}
+.nav-logo{font-family:var(--f-serif);font-size:1.3rem;font-weight:700;color:var(--text)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:none}
+@media(min-width:1024px){
+  .nav-links{display:flex;align-items:center}
+  .nav-links a{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 .8rem;height:var(--nav-h);display:flex;align-items:center;border-right:1px solid var(--border);transition:color .2s,background .2s;position:relative;white-space:nowrap}
+  .nav-links a:first-child{border-left:1px solid var(--border)}
+  .nav-links a:hover,.nav-links a.on{color:var(--text);background:rgba(255,255,255,.03)}
+  .nav-links a.on::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
 }
-a { text-decoration:none; color:inherit; transition:color var(--dur-fast); }
-img { max-width:100%; display:block; }
-ul,ol { list-style:none; }
-::-webkit-scrollbar { width:3px; }
-::-webkit-scrollbar-track { background:var(--bg); }
-::-webkit-scrollbar-thumb { background:var(--muted3); border-radius:2px; }
-
-/* ── PAGE TRANSITION ────────────────────────────────── */
-.page-in {
-  opacity:0;
-  transform:translateY(16px);
-  transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+.nav-cta{display:none}
+@media(min-width:1024px){
+  .nav-cta{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);background:var(--gold);padding:.5rem 1.1rem;border-radius:2px;transition:background .2s;margin-left:1rem;white-space:nowrap;display:inline-flex}
+  .nav-cta:hover{background:var(--gold2)}
 }
-.page-in.ready { opacity:1; transform:none; }
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.4rem;width:38px;height:38px;align-items:center;justify-content:center}
+@media(min-width:1024px){.hamburger{display:none}}
+.hamburger span{display:block;width:21px;height:1.5px;background:var(--text);transition:all .3s var(--ease);transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--dark);z-index:490;flex-direction:column;padding:1.5rem 1.25rem;overflow-y:auto;border-top:1px solid var(--border);transform:translateX(100%);transition:transform .35s var(--ease)}
+.mobile-menu.open{display:flex;transform:none}
+body.menu-open{overflow:hidden}
+.mob-link{font-family:var(--f-mono);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.9rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.7rem;transition:color .2s}
+.mob-link:hover,.mob-link.active{color:var(--gold)}
+.mob-link::before{content:"";width:4px;height:4px;background:currentColor;border-radius:50%;flex-shrink:0}
+.mob-link.sub{font-size:.72rem;padding:.65rem 0 .65rem 1rem;color:var(--muted2)}
+.mob-cta{margin-top:1.5rem;display:flex;align-items:center;justify-content:center;background:var(--gold);color:var(--dark);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.95rem;border-radius:2px;font-weight:600;transition:background .2s}
+.mob-cta:hover{background:var(--gold2)}
+@media(min-width:1024px){.mobile-menu{display:none!important}}
 
-/* ── SCROLL REVEAL ──────────────────────────────────── */
-.reveal {
-  opacity:0;
-  transform:translateY(24px);
-  transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
-}
-.reveal.on { opacity:1; transform:none; }
-.d1 { transition-delay:.08s; }
-.d2 { transition-delay:.16s; }
-.d3 { transition-delay:.24s; }
-.d4 { transition-delay:.32s; }
-.d5 { transition-delay:.40s; }
+/* PAGE BANNER (Alinti breadcrumb style) */
+.page-banner{padding:5.5rem 1.25rem 2.5rem;border-bottom:1px solid var(--border);background:var(--dark2);position:relative;overflow:hidden;margin-top:var(--nav-h);text-align:left}
+@media(min-width:768px){.page-banner{padding:7rem 2rem 3.5rem}}
+.pb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 100% at 0% 0%,black 10%,transparent 100%)}
+.pb-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto}
+.pb-tag{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
+.pb-tag::before{content:"";width:16px;height:1px;background:var(--gold)}
+.pb-title{font-family:var(--f-serif);font-weight:700;line-height:.92;letter-spacing:-.01em;color:var(--text)}
+.pb-title em{font-style:italic;color:var(--gold)}
+.pb-sub{font-size:var(--step-0);color:var(--muted);line-height:1.75;max-width:540px;margin-top:1rem}
+/* Breadcrumb (Alinti style) */
+.breadcrumb{display:flex;align-items:center;gap:0;margin-top:1.1rem;flex-wrap:wrap}
+.breadcrumb li{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);display:flex;align-items:center}
+.breadcrumb li::after{content:"/";margin:0 .5rem;color:var(--muted2);opacity:.5}
+.breadcrumb li:last-child::after{display:none}
+.breadcrumb li a{color:var(--gold);transition:color .2s}
+.breadcrumb li a:hover{color:var(--gold2)}
+.breadcrumb li.active{color:var(--text2)}
 
-/* ── NAV ────────────────────────────────────────────── */
-nav {
-  position: fixed; top:0; left:0; right:0; z-index:400;
-  height: var(--nav-h);
-  display: flex; align-items:center; justify-content:space-between;
-  padding: 0 clamp(1rem,4vw,2.5rem);
-  background: rgba(8,8,7,0.95);
-  backdrop-filter: blur(24px) saturate(1.4);
-  border-bottom: 1px solid var(--border);
-  transition: background var(--dur-med), box-shadow var(--dur-med);
-}
-nav.scrolled { background:rgba(8,8,7,0.99); box-shadow:0 1px 32px rgba(0,0,0,.55); }
+/* SECTION HEADER */
+.sec-tag{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
+.sec-tag::before{content:"";width:16px;height:1px;background:var(--gold)}
+.sec-title{font-family:var(--f-serif);font-weight:700;line-height:.95;letter-spacing:-.01em;color:var(--text)}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-div{width:48px;height:2px;background:var(--gold);margin:.85rem 0}
 
-.nav-logo {
-  font-family: var(--f-serif);
-  font-size: var(--step-2);
-  font-weight: 600;
-  color: var(--text);
-  flex-shrink: 0;
-  letter-spacing: 0.01em;
-  transition: opacity var(--dur-fast);
-}
-.nav-logo:hover { opacity:.75; }
-.nav-logo span { color:var(--gold); font-style:italic; }
+/* BUTTONS */
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:var(--dark);font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;padding:.8rem 1.5rem;border-radius:2px;font-weight:600;transition:background .2s,transform .15s;text-align:center}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid var(--border2);color:var(--muted);font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;padding:.8rem 1.5rem;border-radius:2px;transition:all .2s;text-align:center}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-.nav-center { display:flex; align-items:center; }
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--dark2)}
+@media(min-width:768px){footer{padding:2rem}}
+.footer-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem;align-items:center;text-align:center}
+@media(min-width:768px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
+.foot-brand{font-family:var(--f-serif);font-size:1rem;font-weight:700;color:var(--muted)}
+.foot-brand em{font-style:italic;color:var(--gold)}
+.foot-links{display:flex;gap:.6rem 1rem;flex-wrap:wrap;justify-content:center}
+@media(min-width:768px){.foot-links{justify-content:flex-start}}
+.foot-links a{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2)}
 
-.nav-link {
-  font-family: var(--f-mono);
-  font-size: var(--step--2);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted);          /* #A09B91 — 5.2:1 ✓ */
-  padding: 0 .9rem;
-  height: var(--nav-h);
-  display: flex; align-items:center;
-  border-right: 1px solid var(--border);
-  transition: color var(--dur-fast), background var(--dur-fast);
-  position: relative;
-  white-space: nowrap;
-}
-.nav-link:first-child { border-left:1px solid var(--border); }
-.nav-link:hover { color:var(--text); background:rgba(255,255,255,.03); }
-.nav-link.active { color:var(--gold); }
-.nav-link.active::after {
-  content:""; position:absolute; bottom:0; left:0; right:0;
-  height:2px; background:var(--gold);
+/* GLOBAL RESPONSIVE TUNING */
+@media(max-width:430px){
+  .pb-title{font-size:var(--step-6)}
+  .container{padding:0 1rem}
 }
 
-/* Dropdown */
-.nav-dd { position:relative; }
-.nav-dd-btn {
-  font-family: var(--f-mono);
-  font-size: var(--step--2);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0 .9rem;
-  height: var(--nav-h);
-  display: flex; align-items:center; gap:.4rem;
-  border-right:1px solid var(--border);
-  border-left:1px solid var(--border);
-  cursor:pointer; background:none; border-top:none; border-bottom:none;
-  transition:color var(--dur-fast), background var(--dur-fast);
-  position:relative; white-space:nowrap;
-}
-.nav-dd:hover .nav-dd-btn { color:var(--text); background:rgba(255,255,255,.03); }
-.nav-dd-btn.active { color:var(--gold); }
-.nav-dd-btn.active::after { content:""; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold); }
-.nav-dd-btn svg { width:9px; height:9px; transition:transform .25s var(--ease); }
-.nav-dd:hover .nav-dd-btn svg { transform:rotate(180deg); }
-.dd-menu {
-  position:absolute; top:var(--nav-h); left:0; min-width:220px;
-  background:var(--bg2); border:1px solid var(--border2);
-  border-top:2px solid var(--gold);
-  display:none; flex-direction:column; z-index:500;
-  box-shadow:0 16px 48px rgba(0,0,0,.55);
-}
-.nav-dd:hover .dd-menu { display:flex; }
-.dd-item {
-  font-family: var(--f-mono);
-  font-size: var(--step--1);
-  letter-spacing: .08em; text-transform:uppercase;
-  text-decoration:none; color:var(--muted);
-  padding:.9rem 1.2rem; border-bottom:1px solid var(--border);
-  display:flex; align-items:center; gap:.6rem;
-  transition:color var(--dur-fast), background var(--dur-fast);
-}
-.dd-item:last-child { border-bottom:none; }
-.dd-item:hover,.dd-item.active { color:var(--gold); background:rgba(208,154,20,.05); }
-.dd-item::before { content:""; width:4px; height:4px; background:currentColor; border-radius:50%; flex-shrink:0; }
-
-/* Nav right */
-.nav-right { display:flex; align-items:center; gap:.75rem; flex-shrink:0; }
-.nav-hire {
-  font-family: var(--f-mono);
-  font-size: var(--step--2);
-  letter-spacing: .1em; text-transform:uppercase;
-  color:var(--bg); background:var(--gold);
-  padding:.5rem 1.2rem; border-radius:var(--r);
-  transition:background var(--dur-fast), transform .15s;
-  white-space:nowrap;
-}
-.nav-hire:hover { background:var(--gold2); transform:translateY(-1px); }
-
-/* Hamburger */
-.ham {
-  display:none; flex-direction:column; justify-content:center; gap:5px;
-  cursor:pointer; background:none; border:none; padding:.4rem;
-  width:36px; height:36px;
-}
-.ham span {
-  display:block; width:22px; height:1.5px; background:var(--text);
-  transition:all .3s var(--ease); transform-origin:center;
-}
-.ham.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
-.ham.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-.ham.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-
-/* Mobile menu */
-.mob-menu {
-  position:fixed; top:var(--nav-h); left:0; right:0; bottom:0;
-  background:var(--bg); z-index:390;
-  display:flex; flex-direction:column;
-  padding:1.5rem clamp(1rem,4vw,2rem);
-  overflow-y:auto; border-top:1px solid var(--border);
-  transform:translateX(100%);
-  transition:transform var(--dur-med) var(--ease);
-}
-.mob-menu.open { transform:none; }
-body.mob-open { overflow:hidden; }
-.mob-link {
-  font-family: var(--f-mono);
-  font-size: var(--step-0);
-  letter-spacing:.08em; text-transform:uppercase;
-  color:var(--muted); padding:1rem 0;
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:center; gap:.75rem;
-  transition:color var(--dur-fast);
-}
-.mob-link:hover,.mob-link.active { color:var(--gold); }
-.mob-link::before { content:""; width:5px; height:5px; background:currentColor; border-radius:50%; flex-shrink:0; }
-.mob-link.sub { font-size:var(--step--1); padding:.75rem 0 .75rem 1.25rem; color:var(--muted2); }
-.mob-hire {
-  margin-top:1.5rem;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--gold); color:var(--bg);
-  font-family:var(--f-mono); font-size:var(--step--1);
-  letter-spacing:.1em; text-transform:uppercase;
-  padding:1rem; border-radius:var(--r); font-weight:600;
-  transition:background var(--dur-fast);
-}
-.mob-hire:hover { background:var(--gold2); }
-
-/* ── SECTION HEADERS ─────────────────────────────────── */
-.sec-tag {
-  font-family: var(--f-mono);
-  font-size: var(--step--1);
-  letter-spacing: .16em; text-transform:uppercase;
-  color: var(--gold);
-  margin-bottom:.85rem;
-  display:flex; align-items:center; gap:.75rem;
-}
-.sec-tag::before { content:""; width:20px; height:1px; background:var(--gold); }
-
-.sec-h {
-  font-family: var(--f-serif);
-  font-weight: 400;
-  line-height: .9;
-  letter-spacing:-.02em;
-  color: var(--text);
-}
-.sec-h em { font-style:italic; color:var(--gold); }
-.sec-div { width:56px; height:2px; background:var(--gold); margin:.9rem 0; }
-
-/* ── BUTTONS ─────────────────────────────────────────── */
-.btn-gold {
-  display:inline-flex; align-items:center; gap:.55rem;
-  background:var(--gold); color:var(--bg);
-  font-family:var(--f-mono); font-size:var(--step--1);
-  letter-spacing:.1em; text-transform:uppercase;
-  padding:.85rem 1.75rem; border-radius:var(--r); font-weight:600;
-  transition:background var(--dur-fast), transform .15s;
-}
-.btn-gold:hover { background:var(--gold2); transform:translateY(-2px); }
-
-.btn-ghost {
-  display:inline-flex; align-items:center; gap:.55rem;
-  border:1px solid var(--border2); color:var(--muted);
-  font-family:var(--f-mono); font-size:var(--step--1);
-  letter-spacing:.1em; text-transform:uppercase;
-  padding:.85rem 1.75rem; border-radius:var(--r);
-  transition:border-color var(--dur-fast), color var(--dur-fast), transform .15s;
-}
-.btn-ghost:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
-
-/* ── TAGS / PILLS ────────────────────────────────────── */
-.tag {
-  font-family: var(--f-mono);
-  font-size: var(--step--2);
-  letter-spacing:.06em; text-transform:uppercase;
-  padding:.25rem .55rem;
-  background:var(--bg3); color:var(--muted2);
-  border-radius:2px; border:1px solid var(--border);
-}
-
-/* ── TICKER ──────────────────────────────────────────── */
-.ticker { overflow:hidden; padding:.8rem 0; background:var(--bg2); border-bottom:1px solid var(--border); }
-.ticker-track { display:flex; animation:tick 36s linear infinite; white-space:nowrap; }
-.ticker-track:hover { animation-play-state:paused; }
-.tick-i {
-  font-family:var(--f-mono); font-size:var(--step--1);
-  letter-spacing:.14em; text-transform:uppercase;
-  color:var(--muted); padding:0 2rem; flex-shrink:0;
-}
-.tick-g { color:var(--gold); }
-@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-/* ── PORTRAIT (fixed bleed) ──────────────────────────── */
-.portrait-shell {
-  position:relative;
-  width: clamp(260px,35vw,340px);
-  /* isolate stacking context so pseudo-elements clip correctly */
-  isolation: isolate;
-}
-.portrait-shell::before {
-  content:"";
-  position:absolute; inset:-12px;
-  border:1px solid var(--gold-line);
-  border-radius:var(--r);
-  z-index:-1;
-  animation:framePulse 4s ease-in-out infinite;
-  /* clip to shell so it never bleeds outside the parent bounding box */
-  overflow:hidden;
-}
-.portrait-shell::after {
-  content:"";
-  position:absolute;
-  /* shadow offset — stays inside shell boundary */
-  top:12px; left:12px; right:-12px; bottom:-12px;
-  background:var(--gold-dim);
-  border-radius:var(--r);
-  z-index:-2;
-  /* clip overflow so shadow can't bleed on mobile */
-  clip-path:inset(0 -12px -12px 0);
-}
-@keyframes framePulse {
-  0%,100% { border-color:rgba(208,154,20,.15); }
-  50%      { border-color:rgba(208,154,20,.40); }
-}
-.portrait-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit:cover;
-  object-position:center 8%;
-  border-radius:var(--r);
-  display:block;
-  position:relative; z-index:1;
-  filter:contrast(1.03) saturate(.92);
-}
-.portrait-name {
-  font-family:var(--f-serif);
-  font-size:var(--step-1);
-  font-weight:500;
-  color:var(--text2);
-  letter-spacing:.04em;
-  margin-top:1.25rem;
-}
-.portrait-role {
-  font-family:var(--f-mono);
-  font-size:var(--step--2);
-  letter-spacing:.1em; text-transform:uppercase;
-  color:var(--muted); margin-top:.3rem;
-}
-
-/* ── FOOTER ──────────────────────────────────────────── */
-footer {
-  border-top:1px solid var(--border);
-  padding:1.75rem clamp(1rem,4vw,2.5rem);
-  display:flex; justify-content:space-between; align-items:center;
-  flex-wrap:wrap; gap:1rem;
-  background:var(--bg2);
-}
-.foot-l { font-family:var(--f-serif); font-size:var(--step-0); color:var(--muted); }
-.foot-l em { font-style:italic; color:var(--gold); }
-.foot-links { display:flex; gap:1.5rem; flex-wrap:wrap; }
-.foot-links a {
-  font-family:var(--f-mono); font-size:var(--step--2);
-  letter-spacing:.08em; text-transform:uppercase;
-  color:var(--muted2); transition:color var(--dur-fast);
-}
-.foot-links a:hover { color:var(--gold); }
-.foot-r { font-family:var(--f-mono); font-size:var(--step--2); letter-spacing:.08em; text-transform:uppercase; color:var(--muted3); }
-
-/* ── RESPONSIVE BREAKPOINTS ──────────────────────────── */
-@media(max-width:1100px) {
-  .nav-link,.nav-dd-btn { padding:0 .7rem; }
-}
-@media(max-width:900px) {
-  nav { padding:0 1.25rem; }
-  .nav-center { display:none; }
-  .ham { display:flex; }
-  footer { flex-direction:column; text-align:center; padding:1.5rem; }
-  .foot-links { justify-content:center; }
-}
-@media(max-width:600px) {
-  .foot-links { gap:1rem; }
-}
-
-/* ── ANIMATIONS ──────────────────────────────────────── */
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-@keyframes glowPulse { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.08)} }
-@keyframes spin { to{transform:rotate(360deg)} }
-
-.des-hero{padding:clamp(5rem,12vw,8rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,4rem);border-bottom:1px solid var(--border);background:var(--bg2);margin-top:var(--nav-h);display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:end;position:relative;overflow:hidden}
-.des-quote{font-family:var(--f-serif);font-size:var(--step-2);font-weight:300;font-style:italic;color:var(--muted);line-height:1.55;text-align:right;max-width:300px;margin-left:auto}
-.des-quote em{color:var(--gold);font-style:normal}
-.iit-card{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
-.iit-l{background:var(--bg3);padding:clamp(1.75rem,4vw,3rem);display:flex;flex-direction:column;justify-content:space-between}
-.iit-r{background:var(--bg2);padding:clamp(1.75rem,4vw,3rem);border-left:1px solid var(--border)}
-.iit-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold-dim);border:1px solid var(--gold-line);padding:.35rem .85rem;border-radius:2px;font-family:var(--f-mono);font-size:var(--step--2);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;width:fit-content}
-.iit-h{font-family:var(--f-serif);font-size:var(--step-3);font-weight:400;color:var(--text);line-height:1.1;margin-bottom:1rem}
+.iit-card{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+@media(min-width:768px){.iit-card{grid-template-columns:1fr 1fr}}
+.iit-l{background:var(--dark3);padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between}
+@media(min-width:768px){.iit-l{padding:2.25rem}}
+.iit-r{background:var(--dark2);padding:1.75rem}
+@media(min-width:768px){.iit-r{padding:2.25rem}}
+.iit-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold-dim);border:1px solid var(--gold-border);padding:.35rem .8rem;border-radius:2px;font-family:var(--f-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;width:fit-content}
+.iit-h{font-family:var(--f-serif);font-size:var(--step-3);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.9rem}
 .iit-h em{font-style:italic;color:var(--gold)}
-.iit-desc{font-size:var(--step-0);color:var(--muted);line-height:1.8;margin-bottom:1.75rem}
-.iit-facts{display:flex;gap:2rem;flex-wrap:wrap}
-.iit-ml{font-family:var(--f-mono);font-size:var(--step--2);letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:.25rem}
-.iit-mv{font-size:var(--step-0);font-weight:500;color:var(--text2)}
-.iit-embed{width:100%;height:clamp(220px,30vw,300px);border:1px solid var(--border2);border-radius:3px;overflow:hidden;background:var(--bg3);margin-bottom:1.5rem}
+.iit-desc{font-size:var(--step--1);color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+.iit-facts{display:flex;gap:1.5rem;flex-wrap:wrap}
+.iit-ml{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin-bottom:.2rem}
+.iit-mv{font-size:var(--step--1);font-weight:600;color:var(--text2)}
+.iit-embed{width:100%;height:220px;border:1px solid var(--border2);border-radius:3px;overflow:hidden;background:var(--dark3);margin-bottom:1.25rem}
+@media(min-width:768px){.iit-embed{height:280px}}
 .iit-embed iframe{width:100%;height:100%;border:none}
-.sec-header-bar{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,4vw,2.5rem);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-end;background:var(--bg2);flex-wrap:wrap;gap:1rem}
-.browse-lnk{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2);padding-bottom:.15rem;transition:color var(--dur-fast),border-color var(--dur-fast)}
+.sec-header-bar{padding:1.5rem 1.25rem;border-bottom:1px solid var(--border);background:var(--dark2)}
+@media(min-width:768px){.sec-header-bar{padding:2rem;display:flex;justify-content:space-between;align-items:flex-end}}
+.browse-lnk{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2);padding-bottom:.15rem;transition:color .2s,border-color .2s;display:inline-block;margin-top:.75rem}
+@media(min-width:768px){.browse-lnk{margin-top:0}}
 .browse-lnk:hover{color:var(--gold);border-color:var(--gold)}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-.cc{background:var(--bg2);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background var(--dur-fast)}
-.cc:hover{background:var(--bg3)}
-.cc:hover .cc-arr{background:var(--gold);border-color:var(--gold);color:var(--bg)}
-.cc-thumb{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);font-size:2.5rem}
-.cc-body{padding:1.4rem;flex:1;display:flex;flex-direction:column}
-.cc-lbl{font-family:var(--f-mono);font-size:var(--step--2);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
-.cc-name{font-family:var(--f-serif);font-size:var(--step-1);font-weight:400;color:var(--text);margin-bottom:.4rem;line-height:1.2}
-.cc-desc{font-size:var(--step--1);color:var(--muted);line-height:1.65;flex:1}
-.cc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--border)}
-.cc-tag{font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)}
-.cc-arr{width:26px;height:26px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:var(--step--2);color:var(--muted2);transition:all .22s}
-.gr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.gc{background:var(--bg2);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background var(--dur-fast)}
-.gc:hover{background:var(--bg3)}
-.gc:hover .gc-arr{background:var(--gold);border-color:var(--gold);color:var(--bg)}
-.gc-thumb{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);font-size:2rem}
-.gc-body{padding:1.4rem;flex:1}
-.gc-lbl{font-family:var(--f-mono);font-size:var(--step--2);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
-.gc-name{font-family:var(--f-serif);font-size:var(--step-1);font-weight:400;color:var(--text);margin-bottom:.4rem}
-.gc-desc{font-size:var(--step--1);color:var(--muted);line-height:1.65}
-.gc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--border)}
-.gc-arr{width:26px;height:26px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:var(--step--2);color:var(--muted2);transition:all .22s}
-@media(max-width:1024px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){.des-hero{grid-template-columns:1fr}.des-quote{display:none}.iit-card{grid-template-columns:1fr}.iit-l,.iit-r{padding:1.75rem 1.25rem}.sec-header-bar{padding:1.5rem 1.25rem}.gr-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.cat-grid{grid-template-columns:1fr}.gr-grid{grid-template-columns:1fr}}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+@media(min-width:768px){.cat-grid{grid-template-columns:repeat(4,1fr)}}
+.cc{background:var(--dark2);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background .2s}
+.cc:hover{background:var(--dark3)}
+.cc:hover .cc-arr{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.cc-thumb{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);font-size:2rem}
+.cc-body{padding:1.1rem;flex:1;display:flex;flex-direction:column}
+.cc-lbl{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.cc-name{font-family:var(--f-serif);font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.35rem;line-height:1.2}
+.cc-desc{font-size:.7rem;color:var(--muted);line-height:1.6;flex:1}
+.cc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--border)}
+.cc-tag{font-family:var(--f-mono);font-size:.5rem;color:var(--muted2)}
+.cc-arr{width:24px;height:24px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--muted2);transition:all .22s}
+.gr-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+@media(min-width:640px){.gr-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.gr-grid{grid-template-columns:repeat(3,1fr)}}
+.gc{background:var(--dark2);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:background .2s}
+.gc:hover{background:var(--dark3)}
+.gc:hover .gc-arr{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.gc-thumb{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);font-size:1.8rem}
+.gc-body{padding:1.25rem;flex:1}
+.gc-lbl{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.gc-name{font-family:var(--f-serif);font-size:.98rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.gc-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
+.gc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--border)}
+.gc-arr{width:24px;height:24px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--muted2);transition:all .22s}
 </style>
 </head>
 <body>
-<div id="loader" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s"><div style="width:40px;height:40px;border:2px solid var(--border2);border-top-color:var(--gold);border-radius:50%;animation:spin .9s linear infinite"></div></div>
-<style>#loader.done{opacity:0;visibility:hidden}</style>
-<nav id="mainNav">
-  <a href="index.html" class="nav-logo">DB<span>.</span></a>
-  <div class="nav-center">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="works.html" class="nav-link">Works</a>
-    <div class="nav-dd">
-      <button class="nav-dd-btn">Photography
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="dd-menu">
-        <a href="street.html" class="dd-item">Street Photography</a>
-        <a href="charak.html" class="dd-item">Charak — The Festival</a>
-        <a href="varanasi.html" class="dd-item">Varanasi — The Holy City</a>
-      </div>
-    </div>
-    <a href="design.html" class="nav-link active">Design</a>
-    <a href="about.html" class="nav-link">About</a>
-    <a href="experience.html" class="nav-link">Experience</a>
-    <a href="contact.html" class="nav-link">Contact</a>
+<div id="loader"><div class="loader-ring"></div></div>
+<header id="hdr">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">DB<span>.</span></a>
+    <nav class="nav-links">
+      <a href="index.html" class="">Home</a>
+      <a href="works.html" class="">Works</a>
+      <a href="photography.html" class="">Photography</a>
+      <a href="design.html" class=" on">Design</a>
+      <a href="about.html" class="">About</a>
+      <a href="experience.html" class="">Experience</a>
+      <a href="contact.html" class="">Contact</a>
+    </nav>
+    <a href="contact.html" class="nav-cta">Hire Me ↗</a>
+    <button class="hamburger" id="hb" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-  <div class="nav-right">
-    <a href="contact.html" class="nav-hire">Hire Me ↗</a>
-    <button class="ham" id="hamBtn" onclick="toggleMenu()" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="mob-menu" id="mobMenu">
+</header>
+<div class="mobile-menu" id="mm">
   <a href="index.html" class="mob-link">Home</a>
   <a href="works.html" class="mob-link">Works</a>
   <a href="photography.html" class="mob-link">Photography</a>
   <a href="street.html" class="mob-link sub">↳ Street Photography</a>
   <a href="charak.html" class="mob-link sub">↳ Charak — The Festival</a>
   <a href="varanasi.html" class="mob-link sub">↳ Varanasi — The Holy City</a>
-  <a href="design.html" class="mob-link active">Design</a>
+  <a href="design.html" class="mob-link on">Design</a>
   <a href="about.html" class="mob-link">About</a>
   <a href="experience.html" class="mob-link">Experience</a>
   <a href="contact.html" class="mob-link">Contact</a>
-  <a href="contact.html" class="mob-hire">Hire Me ↗</a>
+  <a href="contact.html" class="mob-cta">Hire Me ↗</a>
 </div>
-<div class="page-in">
 
-<div class="des-hero"><div class="pb-grid"></div>
-  <div style="position:relative;z-index:1">
-    <div class="sec-tag reveal">Design &amp; Video Portfolio</div>
-    <h1 class="sec-h reveal d1" style="font-size:var(--step-7)">Where craft<br>meets <em>purpose.</em></h1>
-    <p class="reveal d2" style="font-size:var(--step-0);color:var(--muted);line-height:1.8;max-width:440px;margin-top:1.1rem">Two portfolios — video work across animation, promo, lifestyle, science; graphics across thumbnails, brochures, social, UI/UX, and books.</p>
+<div class="page-banner"><div class="pb-grid"></div>
+  <div class="pb-inner">
+    <div class="pb-tag fade-up">Design &amp; Video Portfolio</div>
+    <h1 class="pb-title fade-up d1" style="font-size:var(--step-7)">Where craft<br>meets <em>purpose.</em></h1>
+    <p class="pb-sub fade-up d2">Two portfolios — video work across animation, promo, lifestyle, science; graphics across thumbnails, brochures, social, UI/UX, and books.</p>
+    <ol class="breadcrumb"><li><a href="index.html">Home</a></li><li class="active">Design</li></ol>
   </div>
-  <div style="position:relative;z-index:1"><p class="des-quote reveal d2">Design is not decoration. It is the <em>language</em> of intent.</p></div>
 </div>
-<!-- IIT KGP Feature -->
-<div style="padding:clamp(2rem,5vw,3rem) clamp(1rem,4vw,2.5rem);border-bottom:1px solid var(--border);background:var(--bg2)">
-  <div class="sec-tag reveal" style="margin-bottom:.5rem">Featured Achievement</div>
-  <div class="iit-card reveal d1">
+<div class="container section-padding">
+  <div class="sec-tag fade-up" style="margin-bottom:.5rem">Featured Achievement</div>
+  <div class="iit-card fade-up d1">
     <div class="iit-l">
       <div>
         <div class="iit-badge">🏆 3rd Prize · Spring Fest · IIT Kharagpur</div>
@@ -539,112 +253,63 @@ footer {
     </div>
   </div>
 </div>
-<!-- Video Categories -->
 <div class="sec-header-bar fade-up">
-  <div><div class="sec-tag" style="margin-bottom:.4rem">01 — Video Portfolio</div><h2 class="sec-h" style="font-size:var(--step-3)">Video work, <em>categorised</em></h2></div>
+  <div><div class="sec-tag" style="margin-bottom:.4rem">01 — Video Portfolio</div><h2 class="sec-title" style="font-size:var(--step-2)">Video work, <em>categorised</em></h2></div>
   <a href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank" rel="noopener" class="browse-lnk">Browse Full Portfolio Drive ↗</a>
 </div>
 <div class="cat-grid">
-  <a class="cc reveal" href="https://drive.google.com/drive/folders/1hEg8Z-YKghvrwZ6F3Swv17iUvy4lqXOk" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A0A12,#14141E)">🎬</div><div class="cc-body"><div class="cc-lbl">Animation</div><div class="cc-name">2D &amp; 3D Animation</div><div class="cc-desc">Motion graphics, 2D character animation, and 3D animation samples across formats.</div><div class="cc-foot"><span class="cc-tag">Drive Folder</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A120E,#0E1814)">📣</div><div class="cc-body"><div class="cc-lbl">Promo Video</div><div class="cc-name">Promo &amp; Brand Videos</div><div class="cc-desc">Promotional content for brands, products, and campaigns. Punchy, attention-first edits.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d2" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#120808,#1E1210)">🌿</div><div class="cc-body"><div class="cc-lbl">Lifestyle</div><div class="cc-name">Lifestyle &amp; Living</div><div class="cc-desc">Warm, cinematic lifestyle content for brands and creators.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d3" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#08100A,#0C1810)">💼</div><div class="cc-body"><div class="cc-lbl">Case Study</div><div class="cc-name">Case Study Videos</div><div class="cc-desc">Documentary-style case study and explainer videos for business and education.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#080C14,#0C1020)">🚀</div><div class="cc-body"><div class="cc-lbl">Science &amp; Space</div><div class="cc-name">Science &amp; Space</div><div class="cc-desc">Complex ideas made cinematic and visually accessible.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0E0808,#1A0E0C)">✈️</div><div class="cc-body"><div class="cc-lbl">Travel &amp; Mystery</div><div class="cc-name">Travel &amp; Mystery</div><div class="cc-desc">Atmospheric travel content — immersive edits that make you feel the place.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d2" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A0A08,#161610)">🔤</div><div class="cc-body"><div class="cc-lbl">Typography</div><div class="cc-name">Typography Motion</div><div class="cc-desc">Kinetic typography and text-driven motion pieces.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
-  <a class="cc reveal d3" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#080E12,#0C1418)">💡</div><div class="cc-body"><div class="cc-lbl">Whiteboard</div><div class="cc-name">Whiteboard &amp; Motivation</div><div class="cc-desc">Whiteboard explainers and motivational video content for education brands.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up" href="https://drive.google.com/drive/folders/1hEg8Z-YKghvrwZ6F3Swv17iUvy4lqXOk" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A0A12,#14141E)">🎬</div><div class="cc-body"><div class="cc-lbl">Animation</div><div class="cc-name">2D &amp; 3D Animation</div><div class="cc-desc">Motion graphics, 2D character animation, and 3D samples.</div><div class="cc-foot"><span class="cc-tag">Drive Folder</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A120E,#0E1814)">📣</div><div class="cc-body"><div class="cc-lbl">Promo Video</div><div class="cc-name">Promo &amp; Brand Videos</div><div class="cc-desc">Promotional content for brands and campaigns.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#120808,#1E1210)">🌿</div><div class="cc-body"><div class="cc-lbl">Lifestyle</div><div class="cc-name">Lifestyle &amp; Living</div><div class="cc-desc">Warm, cinematic lifestyle content for brands.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#08100A,#0C1810)">💼</div><div class="cc-body"><div class="cc-lbl">Case Study</div><div class="cc-name">Case Study Videos</div><div class="cc-desc">Documentary-style case study and explainer videos.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#080C14,#0C1020)">🚀</div><div class="cc-body"><div class="cc-lbl">Science &amp; Space</div><div class="cc-name">Science &amp; Space</div><div class="cc-desc">Complex ideas made cinematic and accessible.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0E0808,#1A0E0C)">✈️</div><div class="cc-body"><div class="cc-lbl">Travel &amp; Mystery</div><div class="cc-name">Travel &amp; Mystery</div><div class="cc-desc">Atmospheric travel content, immersive edits.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#0A0A08,#161610)">🔤</div><div class="cc-body"><div class="cc-lbl">Typography</div><div class="cc-name">Typography Motion</div><div class="cc-desc">Kinetic typography and text-driven motion.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
+  <a class="cc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="cc-thumb" style="background:linear-gradient(135deg,#080E12,#0C1418)">💡</div><div class="cc-body"><div class="cc-lbl">Whiteboard</div><div class="cc-name">Whiteboard &amp; Motivation</div><div class="cc-desc">Whiteboard explainers for education brands.</div><div class="cc-foot"><span class="cc-tag">Portfolio Drive</span><div class="cc-arr">↗</div></div></div></a>
 </div>
-<!-- Graphics Categories -->
 <div class="sec-header-bar fade-up" style="border-top:1px solid var(--border)">
-  <div><div class="sec-tag" style="margin-bottom:.4rem">02 — Graphics Portfolio</div><h2 class="sec-h" style="font-size:var(--step-3)">Design work, <em>categorised</em></h2></div>
+  <div><div class="sec-tag" style="margin-bottom:.4rem">02 — Graphics Portfolio</div><h2 class="sec-title" style="font-size:var(--step-2)">Design work, <em>categorised</em></h2></div>
   <a href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank" rel="noopener" class="browse-lnk">Browse Portfolio Drive ↗</a>
 </div>
 <div class="gr-grid">
-  <a class="gc reveal" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#0A0A0E,#141420)">🖼️</div><div class="gc-body"><div class="gc-lbl">Thumbnails</div><div class="gc-name">YouTube Thumbnails</div><div class="gc-desc">High-CTR thumbnail design for YouTube channels. Data-informed, visually striking.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
-  <a class="gc reveal d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#0A100A,#14180E)">📄</div><div class="gc-body"><div class="gc-lbl">Print Design</div><div class="gc-name">Brochures &amp; Print</div><div class="gc-desc">Corporate brochures, flyers, and print collateral — layout-first, brand-accurate design.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
-  <a class="gc reveal d2" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#120808,#1E1010)">📱</div><div class="gc-body"><div class="gc-lbl">Social Media</div><div class="gc-name">Social Media Design</div><div class="gc-desc">Posts, stories, carousels, and ad creatives for Instagram, Facebook, and LinkedIn.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
-  <a class="gc reveal" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#080A10,#0E1018)">📚</div><div class="gc-body"><div class="gc-lbl">Books &amp; Editorial</div><div class="gc-name">Book &amp; Magazine Design</div><div class="gc-desc">Book covers, magazine layouts, and editorial design.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
-  <a class="gc reveal d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#08100E,#0C1614)">🖥️</div><div class="gc-body"><div class="gc-lbl">UI / UX</div><div class="gc-name">UI UX Design</div><div class="gc-desc">Wireframes, high-fidelity Figma prototypes, dashboards. Google UX certified.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
-  <a class="gc reveal d2" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#100A08,#181210)">🏷️</div><div class="gc-body"><div class="gc-lbl">Brand Identity</div><div class="gc-name">Brand &amp; Identity</div><div class="gc-desc">Logos, brand systems, and visual identity for startups and education brands.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:var(--step--2);color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#0A0A0E,#141420)">🖼️</div><div class="gc-body"><div class="gc-lbl">Thumbnails</div><div class="gc-name">YouTube Thumbnails</div><div class="gc-desc">High-CTR thumbnail design across niches.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#0A100A,#14180E)">📄</div><div class="gc-body"><div class="gc-lbl">Print Design</div><div class="gc-name">Brochures &amp; Print</div><div class="gc-desc">Corporate brochures and print collateral.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#120808,#1E1010)">📱</div><div class="gc-body"><div class="gc-lbl">Social Media</div><div class="gc-name">Social Media Design</div><div class="gc-desc">Posts, stories, carousels, ad creatives.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#080A10,#0E1018)">📚</div><div class="gc-body"><div class="gc-lbl">Books &amp; Editorial</div><div class="gc-name">Book &amp; Magazine Design</div><div class="gc-desc">Book covers, magazine layouts, editorial.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#08100E,#0C1614)">🖥️</div><div class="gc-body"><div class="gc-lbl">UI / UX</div><div class="gc-name">UI UX Design</div><div class="gc-desc">Wireframes, Figma prototypes, dashboards.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+  <a class="gc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#100A08,#181210)">🏷️</div><div class="gc-body"><div class="gc-lbl">Brand Identity</div><div class="gc-name">Brand &amp; Identity</div><div class="gc-desc">Logos and visual identity for startups.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
 </div>
 
-<footer>
-  <div class="foot-l">Debojyoti <em>Barat</em> · Portfolio 2026</div>
+<footer><div class="footer-inner">
+  <div class="foot-brand">Debojyoti <em>Barat</em></div>
   <div class="foot-links">
-    <a href="index.html">Home</a>
-    <a href="works.html">Works</a>
-    <a href="photography.html">Photography</a>
-    <a href="design.html">Design</a>
-    <a href="about.html">About</a>
-    <a href="experience.html">Experience</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="works.html">Works</a>
+    <a href="experience.html">Experience</a><a href="photography.html">Photography</a>
+    <a href="design.html">Design</a><a href="contact.html">Contact</a>
   </div>
-  <div class="foot-r">Kolkata · © 2026</div>
-</footer>
-</div>
+  <div class="foot-copy">© 2026 · Kolkata / Remote · Open to Full-Time &amp; Freelance</div>
+</div></footer>
 <script>
-(function(){
-  // Page in
-  document.addEventListener('DOMContentLoaded',function(){
-    var w=document.querySelector('.page-in');
-    if(w) setTimeout(function(){w.classList.add('ready');},40);
-
-    // Close mob links
-    document.querySelectorAll('.mob-link,.mob-hire').forEach(function(el){
-      el.addEventListener('click',function(){
-        var m=document.getElementById('mobMenu'),h=document.getElementById('hamBtn');
-        if(m){m.classList.remove('open');}
-        if(h){h.classList.remove('open');}
-        document.body.classList.remove('mob-open');
-      });
-    });
-
-    // Scroll reveal
-    if('IntersectionObserver' in window){
-      var obs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}
-        });
-      },{threshold:0.1});
-      document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
-    } else {
-      document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('on');});
-    }
-
-    // Skill bars (if any)
-    if('IntersectionObserver' in window){
-      var sobs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){
-            e.target.querySelectorAll('.skill-fill[data-w]').forEach(function(b){b.style.width=b.dataset.w;});
-            sobs.unobserve(e.target);
-          }
-        });
-      },{threshold:0.3});
-      document.querySelectorAll('.skills-wrap').forEach(function(el){sobs.observe(el);});
-    }
+window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('done')},400)});
+window.addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>20)});
+window.toggleMob=function(){
+  var m=document.getElementById('mm'),h=document.getElementById('hb'),o=m.classList.contains('open');
+  m.classList.toggle('open',!o);h.classList.toggle('open',!o);document.body.classList.toggle('menu-open',!o);
+};
+document.querySelectorAll('.mob-link,.mob-cta').forEach(function(el){
+  el.addEventListener('click',function(){
+    document.getElementById('mm').classList.remove('open');
+    document.getElementById('hb').classList.remove('open');
+    document.body.classList.remove('menu-open');
   });
-
-  // Nav scroll
-  window.addEventListener('scroll',function(){
-    document.querySelector('nav').classList.toggle('scrolled',window.scrollY>30);
-  });
-
-  // Hamburger
-  window.toggleMenu=function(){
-    var m=document.getElementById('mobMenu'),h=document.getElementById('hamBtn');
-    var open=m&&m.classList.contains('open');
-    if(m)m.classList.toggle('open',!open);
-    if(h)h.classList.toggle('open',!open);
-    document.body.classList.toggle('mob-open',!open);
-  };
-
-  // Loader hide
-  window.addEventListener('load',function(){
-    var l=document.getElementById('loader');
-    if(l) setTimeout(function(){l.classList.add('done');},400);
-  });
-})();
+});
+document.addEventListener('DOMContentLoaded',function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.fade-up').forEach(function(e){e.classList.add('visible')});return}
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
+  var sobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('.skill-fill[data-w]').forEach(function(b){b.style.width=b.dataset.w});sobs.unobserve(e.target)}})},{threshold:.25});
+  document.querySelectorAll('.skills-wrap').forEach(function(el){sobs.observe(el)});
+});
 </script>
 </body>
 </html>
