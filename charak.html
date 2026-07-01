@@ -181,7 +181,7 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 .story-img-wrap:hover .story-img{transform:scale(1.025);filter:brightness(1.02) saturate(1.03)}
 .story-img-wrap .reveal-mask{position:absolute;inset:0;background:var(--dark);transform-origin:left;z-index:2;transition:transform 1s var(--ease)}
 .story-img-wrap.revealed .reveal-mask{transform:scaleX(0)}
-.frame-num{position:absolute;top:1.25rem;left:1.25rem;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.55);background:rgba(10,10,9,.5);padding:.3rem .65rem;border-radius:2px;backdrop-filter:blur(6px);z-index:3}
+
 .expand-hint{position:absolute;bottom:1.25rem;right:1.25rem;width:36px;height:36px;border-radius:50%;background:rgba(10,10,9,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--text);opacity:0;transition:opacity .3s;z-index:3}
 .story-img-wrap:hover .expand-hint{opacity:1}
 
@@ -339,7 +339,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="0" onclick="openLightbox(0)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-01.jpg" alt="The leap — a devotee swings out over the crowd, saffron robes catching the evening light." loading="lazy">
-    <div class="frame-num">01 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="cap-strip"><span>The leap — a devotee swings out over the crowd, saffron robes catching the evening light.</span></div>
@@ -350,7 +349,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="1" onclick="openLightbox(1)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-02.jpg" alt="The street holds its breath. Thousands gather, phones raised, for a ritual centuries old." loading="lazy">
-    <div class="frame-num">02 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="sb-text reveal">
@@ -365,13 +363,11 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="2" onclick="openLightbox(2)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-03.jpg" alt="Offerings clutched tight — sweets and coins bound for the watching crowd below." loading="lazy">
-    <div class="frame-num">03 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="story-img-wrap reveal-img" data-idx="3" onclick="openLightbox(3)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-04.jpg" alt="Sweets scatter mid-air as the rope swings wide over rooftops and wires." loading="lazy">
-    <div class="frame-num">04 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
 </div>
@@ -394,7 +390,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="5" onclick="openLightbox(5)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-06.jpg" alt="Preparation — ropes are bound around the waist with care, knot by knot." loading="lazy">
-    <div class="frame-num">06 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
 </div>
@@ -404,19 +399,16 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="6" onclick="openLightbox(6)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-07.jpg" alt="Vibhuti ash and rudraksha beads — the face of devotion before the climb." loading="lazy">
-    <div class="frame-num">07</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="story-img-wrap reveal-img" data-idx="7" onclick="openLightbox(7)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-08.jpg" alt="Forehead pressed to wood. A private moment of surrender before the public spectacle." loading="lazy">
-    <div class="frame-num">08</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="story-img-wrap reveal-img" data-idx="8" onclick="openLightbox(8)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-09.jpg" alt="Smoke curls past a devotee lost in quiet, unbothered focus." loading="lazy">
-    <div class="frame-num">09</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
 </div>
@@ -427,7 +419,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="10" onclick="openLightbox(10)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-11.jpg" alt="Hands grip rope overhead — strength gathered before flight." loading="lazy">
-    <div class="frame-num">11 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
   <div class="sb-text reveal">
@@ -437,15 +428,18 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   </div>
 </div>
 
-<!-- FRAME 14 full bleed -->
-<div class="story-block sb-full">
+<!-- FRAME 14 — portrait split -->
+<div class="story-block sb-split reverse">
+  <div class="sb-text reveal">
+    <div class="num">Chapter Three · The Swing</div>
+    <h3>Mid-air —<br><em>held by faith.</em></h3>
+    <p>The crowd below holds hundreds of raised phones, each trying to freeze what the eye cannot hold. Up there, surrounded by noise and sky, something else entirely is happening — a body in motion, a mind completely still.</p>
+  </div>
   <div class="story-img-wrap reveal-img" data-idx="13" onclick="openLightbox(13)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-14.jpg" alt="Mid-air, surrounded by hundreds of raised phones and watching eyes." loading="lazy">
-    <div class="frame-num">14 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
-  <div class="cap-strip"><span>Mid-air, surrounded by hundreds of raised phones and watching eyes.</span></div>
 </div>
 
 <!-- FRAME 15 + TEXT split reversed -->
@@ -458,7 +452,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="story-img-wrap reveal-img" data-idx="14" onclick="openLightbox(14)">
     <div class="reveal-mask"></div>
     <img class="story-img" src="images/charak/charak-15.jpg" alt="Two devotees share one platform — the instant before the rope takes them." loading="lazy">
-    <div class="frame-num">15 / 16</div>
     <div class="expand-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
   </div>
 </div>
