@@ -148,6 +148,8 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 
 /* ─── HERO — full bleed cinematic ── */
 .v-hero{height:100vh;position:relative;overflow:hidden;margin-top:var(--nav-h);display:flex;align-items:flex-end;background:#000}
+#v-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity 2s ease;pointer-events:none}
+#v-canvas.ready{opacity:1}
 .v-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.45) saturate(.8);transform:scale(1.08);transition:transform 10s ease-out}
 .v-hero.loaded .v-hero-img{transform:scale(1)}
 .v-hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(0,0,0,.95) 0%,rgba(0,0,0,.4) 45%,transparent 70%)}
@@ -193,7 +195,7 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 /* ─── LAYOUTS ────────────────────── */
 
 /* 1. Cinematic wide — full viewport width image with text INSIDE */
-.v-cinema{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint}
+.v-cinema{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint;transition:transform .4s cubic-bezier(.2,.8,.3,1);will-change:transform}
 .v-cinema .ci{width:100%;aspect-ratio:21/9;object-fit:cover;filter:brightness(.75) saturate(.9);transition:filter .6s,transform .8s var(--ease);display:block}
 @media(max-width:640px){.v-cinema .ci{aspect-ratio:4/3}}
 .v-cinema:hover .ci{filter:brightness(.88) saturate(1.05);transform:scale(1.02)}
@@ -216,7 +218,7 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 /* 3. Diptych — two images side by side, different heights */
 .v-diptych{display:grid;grid-template-columns:1fr;gap:2px;background:var(--border)}
 @media(min-width:640px){.v-diptych{grid-template-columns:55fr 45fr}}
-.v-diptych-item{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint}
+.v-diptych-item{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint;transition:transform .4s cubic-bezier(.2,.8,.3,1);will-change:transform}
 .v-diptych-item img{width:100%;height:100%;object-fit:cover;min-height:300px;filter:brightness(.88) saturate(.9);transition:filter .5s,transform .6s var(--ease);display:block}
 @media(min-width:640px){.v-diptych-item img{min-height:420px}}
 .v-diptych-item:hover img{filter:brightness(1) saturate(1.05);transform:scale(1.04)}
@@ -228,7 +230,7 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 /* 4. Triptych — three portrait images, tall and cinematic */
 .v-triptych{display:grid;grid-template-columns:1fr;gap:2px;background:var(--border)}
 @media(min-width:640px){.v-triptych{grid-template-columns:repeat(3,1fr)}}
-.v-triptych-item{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint}
+.v-triptych-item{position:relative;overflow:hidden;cursor:pointer;background:var(--dark);contain:paint;transition:transform .4s cubic-bezier(.2,.8,.3,1);will-change:transform}
 .v-triptych-item img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.82) saturate(.9);transition:filter .5s,transform .6s var(--ease);display:block}
 .v-triptych-item:hover img{filter:brightness(.98) saturate(1.08);transform:scale(1.05)}
 .v-triptych-item .v-expand{opacity:0}
@@ -342,6 +344,7 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 
 <!-- ═══ HERO ════════════════════════════════════════════════ -->
 <div class="v-hero" id="vHero">
+  <canvas id="v-canvas"></canvas>
   <img class="v-hero-img" src="images/varanasi/varanasi-06.jpg" alt="Varanasi dusk">
   <div class="v-hero-vignette"></div>
   <div class="v-hero-content">
@@ -732,6 +735,78 @@ document.addEventListener('DOMContentLoaded',function(){
   },{threshold:0.15});
   document.querySelectorAll('.v-reveal,.v-reveal-img').forEach(function(el){obs.observe(el)});
 });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ══ 3D PARTICLE FIELD — hero ══
+(function(){
+  var canvas = document.getElementById('v-canvas');
+  var host = document.getElementById('vHero');
+  if (!canvas || !host || typeof THREE === 'undefined') return;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, host.clientWidth / host.clientHeight, 0.1, 1000);
+  camera.position.z = 26;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(host.clientWidth, host.clientHeight);
+
+  var count = window.innerWidth < 768 ? 180 : 380;
+  var positions = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    positions[i*3]     = (Math.random() - 0.5) * 60;
+    positions[i*3 + 1] = (Math.random() - 0.5) * 34;
+    positions[i*3 + 2] = (Math.random() - 0.5) * 40;
+  }
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  var mat = new THREE.PointsMaterial({ color: 0xc8930a, size: 0.15, transparent: true, opacity: 0.4 });
+  var points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  var mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+  window.addEventListener('mousemove', function(e){
+    mouseX = (e.clientX / window.innerWidth) - 0.5;
+    mouseY = (e.clientY / window.innerHeight) - 0.5;
+  });
+
+  var clock = new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    points.rotation.y = clock.getElapsedTime() * 0.018;
+    curX += (mouseX * 3 - curX) * 0.02;
+    curY += (mouseY * 3 - curY) * 0.02;
+    camera.position.x = curX;
+    camera.position.y = -curY;
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', function(){
+    var w = host.clientWidth, h = host.clientHeight;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+  requestAnimationFrame(function(){ canvas.classList.add('ready'); });
+})();
+
+// ══ 3D TILT — gallery images ══
+(function(){
+  document.querySelectorAll('.v-cinema, .v-diptych-item, .v-triptych-item').forEach(function(el){
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      el.style.transform = 'perspective(900px) rotateY(' + (x * 5) + 'deg) rotateX(' + (y * -5) + 'deg) scale(1.01)';
+    });
+    el.addEventListener('mouseleave', function(){
+      el.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)';
+    });
+  });
+})();
 </script>
 
 <footer><div class="footer-inner">
