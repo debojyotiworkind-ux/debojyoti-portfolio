@@ -92,17 +92,18 @@ body.menu-open{overflow:hidden}
 .mob-cta:hover{background:var(--gold2)}
 @media(min-width:1024px){.mobile-menu{display:none!important}}
 
-/* PAGE BANNER (Alinti breadcrumb style) */
+/* PAGE BANNER */
 .page-banner{padding:5.5rem 1.25rem 2.5rem;border-bottom:1px solid var(--border);background:var(--dark2);position:relative;overflow:hidden;margin-top:var(--nav-h);text-align:left}
 @media(min-width:768px){.page-banner{padding:7rem 2rem 3.5rem}}
 .pb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 100% at 0% 0%,black 10%,transparent 100%)}
+#banner-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity 2s ease}
+#banner-canvas.ready{opacity:1}
 .pb-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto}
 .pb-tag{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
 .pb-tag::before{content:"";width:16px;height:1px;background:var(--gold)}
 .pb-title{font-family:var(--f-serif);font-weight:700;line-height:.92;letter-spacing:-.01em;color:var(--text)}
 .pb-title em{font-style:italic;color:var(--gold)}
 .pb-sub{font-size:var(--step-0);color:var(--muted);line-height:1.75;max-width:540px;margin-top:1rem}
-/* Breadcrumb (Alinti style) */
 .breadcrumb{display:flex;align-items:center;gap:0;margin-top:1.1rem;flex-wrap:wrap}
 .breadcrumb li{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);display:flex;align-items:center}
 .breadcrumb li::after{content:"/";margin:0 .5rem;color:var(--muted2);opacity:.5}
@@ -137,19 +138,29 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 .foot-links a:hover{color:var(--gold)}
 .foot-copy{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2)}
 
-/* GLOBAL RESPONSIVE TUNING */
 @media(max-width:430px){
   .pb-title{font-size:var(--step-6)}
   .container{padding:0 1rem}
 }
 
-.exp-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
-@media(min-width:768px){.exp-grid{grid-template-columns:1fr 1fr}}
-.ei{background:var(--dark2);padding:1.75rem;position:relative;overflow:hidden;transition:background .2s}
+/* ═══ 3D TIMELINE ═══ */
+.timeline-wrap{position:relative;padding-left:2rem}
+@media(min-width:768px){.timeline-wrap{padding-left:2.75rem}}
+.timeline-rail{position:absolute;left:.5rem;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(to bottom,var(--gold) 0%,var(--gold-border) 40%,var(--border) 100%);z-index:0}
+@media(min-width:768px){.timeline-rail{left:.75rem}}
+.timeline-node{position:absolute;left:calc(.5rem - 5px);width:12px;height:12px;border-radius:50%;background:var(--dark);border:2px solid var(--gold);z-index:1;box-shadow:0 0 0 4px var(--dark),0 0 16px rgba(200,147,10,.5);transition:box-shadow .3s}
+@media(min-width:768px){.timeline-node{left:calc(.75rem - 5px)}}
+.timeline-node.pulse{animation:nodePulse 2.4s ease-in-out infinite}
+@keyframes nodePulse{0%,100%{box-shadow:0 0 0 4px var(--dark),0 0 16px rgba(200,147,10,.5)}50%{box-shadow:0 0 0 4px var(--dark),0 0 26px rgba(200,147,10,.85)}}
+
+.exp-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;perspective:1400px}
+@media(min-width:768px){.exp-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.ei{background:var(--dark2);padding:1.75rem;position:relative;overflow:hidden;transition:background .2s,transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s;border:1px solid var(--border);border-radius:4px;will-change:transform}
 @media(min-width:768px){.ei{padding:2.25rem}}
-.ei:hover{background:var(--dark3)}
-.ei::before{content:attr(data-n);position:absolute;top:1.25rem;right:1.5rem;font-family:var(--f-serif);font-size:4.5rem;font-weight:700;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none}
+.ei:hover{background:var(--dark3);box-shadow:0 24px 50px -16px rgba(0,0,0,.55),0 0 0 1px var(--gold-border)}
+.ei::before{content:attr(data-n);position:absolute;top:1.25rem;right:1.5rem;font-family:var(--f-serif);font-size:4.5rem;font-weight:700;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none;transition:color .3s}
 @media(min-width:768px){.ei::before{font-size:6rem}}
+.ei:hover::before{color:rgba(200,147,10,.06)}
 .ep{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
 .ec{font-family:var(--f-serif);font-size:.92rem;font-weight:700;color:var(--text2);margin-bottom:.25rem}
 .el{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem}
@@ -160,13 +171,21 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 .eu li::before{content:"→";color:var(--gold);font-size:.65rem;flex-shrink:0;margin-top:.35rem}
 .etags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border)}
 .etag{font-family:var(--f-mono);font-size:.52rem;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .5rem;border:1px solid var(--border2);color:var(--muted2);border-radius:2px}
-.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:1.5rem}
+
+/* ═══ 3D FLIP CARDS — AI Toolchain ═══ */
+.ai-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.5rem;perspective:1000px}
 @media(min-width:640px){.ai-grid{grid-template-columns:repeat(4,1fr)}}
-.ai-tool{background:var(--dark2);padding:1.25rem;transition:background .2s}
-.ai-tool:hover{background:var(--dark3)}
-.ai-ico{font-size:1.2rem;margin-bottom:.5rem}
+.ai-tool{background:transparent;height:132px;perspective:900px}
+.ai-flip{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;cursor:pointer}
+.ai-tool:hover .ai-flip,.ai-tool.flipped .ai-flip{transform:rotateY(180deg)}
+.ai-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:4px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;padding:1.1rem;background:var(--dark2)}
+.ai-face.front{transition:background .2s}
+.ai-face.back{transform:rotateY(180deg);background:var(--dark4);border-color:var(--gold-border);justify-content:center}
+.ai-ico{font-size:1.3rem;margin-bottom:.5rem}
 .ai-name{font-size:var(--step--1);font-weight:600;color:var(--text2);margin-bottom:.2rem}
 .ai-cat{font-family:var(--f-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ai-back-lbl{font-family:var(--f-mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.ai-back-txt{font-size:.68rem;color:var(--text2);line-height:1.5}
 </style>
 </head>
 <body>
@@ -178,7 +197,6 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
       <a href="index.html" class="">Home</a>
       <a href="works.html" class="">Works</a>
       <a href="photography.html" class="">Photography</a>
-      <a href="design.html" class="">Design</a>
       <a href="about.html" class="">About</a>
       <a href="experience.html" class=" on">Experience</a>
       <a href="contact.html" class="">Contact</a>
@@ -191,17 +209,16 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <a href="index.html" class="mob-link">Home</a>
   <a href="works.html" class="mob-link">Works</a>
   <a href="photography.html" class="mob-link">Photography</a>
-  <a href="street.html" class="mob-link sub">↳ Street Photography</a>
   <a href="charak.html" class="mob-link sub">↳ Charak — The Festival</a>
   <a href="varanasi.html" class="mob-link sub">↳ Varanasi — The Holy City</a>
-  <a href="design.html" class="mob-link">Design</a>
+  <a href="bhutan.html" class="mob-link sub">↳ Bhutan — The Last Shangri-La</a>
   <a href="about.html" class="mob-link">About</a>
   <a href="experience.html" class="mob-link on">Experience</a>
   <a href="contact.html" class="mob-link">Contact</a>
   <a href="contact.html" class="mob-cta">Hire Me ↗</a>
 </div>
 
-<div class="page-banner"><div class="pb-grid"></div>
+<div class="page-banner"><canvas id="banner-canvas"></canvas><div class="pb-grid"></div>
   <div class="pb-inner">
     <div class="pb-tag fade-up">Career</div>
     <h1 class="pb-title fade-up d1" style="font-size:var(--step-7)">Seven years of<br><em>real</em> work.</h1>
@@ -210,64 +227,95 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   </div>
 </div>
 <div class="container section-padding">
-  <div class="exp-grid">
-    <div class="ei fade-up" data-n="01">
-      <div class="ep">2023 – Present</div><div class="ec">IEMA Research &amp; Development Pvt. Ltd.</div><div class="el">Kolkata, West Bengal</div>
-      <div class="er">Senior Multimedia <em>Specialist</em></div>
-      <ul class="eu">
-        <li>End-to-end multimedia production — content shoots, video editing, full post-production pipeline management.</li>
-        <li>Directed and produced promotional content, 2D animations, and long-form educational videos.</li>
-        <li>Designed brand assets — brochures, magazines, and UI/UX interfaces for digital platforms.</li>
-        <li>Built a generative AI pipeline integrating Veo 3, Higgsfield, Sora, and ElevenLabs into daily delivery.</li>
-      </ul>
-      <div class="etags"><span class="etag">Premiere Pro</span><span class="etag">Figma</span><span class="etag">Gen AI</span><span class="etag">UI/UX</span></div>
-    </div>
-    <div class="ei fade-up d1" data-n="02">
-      <div class="ep">2022 – 2023</div><div class="ec">Pathfinder Educational Centre LLP</div><div class="el">Kolkata, West Bengal</div>
-      <div class="er">Senior Video Editor &amp; <em>Graphic Designer</em></div>
-      <ul class="eu">
-        <li>Supervised all video content pipelines and led a creative team to execute high-quality digital assets.</li>
-        <li>Executed professional multi-camera shoots for podcast channels and e-learning platforms.</li>
-        <li>Managed full Udemy course post-production — editing, sound design, motion titles, and delivery.</li>
-        <li>Strategised content for marketing — reels, targeted ads, and social media creatives.</li>
-      </ul>
-      <div class="etags"><span class="etag">Multi-Camera</span><span class="etag">Podcast</span><span class="etag">Social Reels</span></div>
-    </div>
-    <div class="ei fade-up" data-n="03">
-      <div class="ep">2019 – 2020</div><div class="ec">Institute of Engineering &amp; Management</div><div class="el">Kolkata, West Bengal</div>
-      <div class="er">Video Editor &amp; <em>Broadcasting</em></div>
-      <ul class="eu">
-        <li>Managed live broadcast operations for dynamic institutional content delivery.</li>
-        <li>Filmed and edited educational and motivational video content for institutional engagement.</li>
-        <li>Designed promotional creatives and posters for marketing campaigns and event outreach.</li>
-      </ul>
-      <div class="etags"><span class="etag">Live Broadcast</span><span class="etag">Premiere Pro</span><span class="etag">Photography</span></div>
-    </div>
-    <div class="ei fade-up d1" data-n="04">
-      <div class="ep">Project</div><div class="ec">India Post</div><div class="el">New Delhi, India</div>
-      <div class="er">Digital Multimedia Specialist — <em>Museum Project</em></div>
-      <ul class="eu">
-        <li>Directed and developed digital multimedia and interactive components for the India Post national museum.</li>
-        <li>Produced interactive video presentations modernising historical exhibits for thousands of visitors nationwide.</li>
-        <li>End-to-end: scripting, production, editing, and integration into the museum's interactive infrastructure.</li>
-      </ul>
-      <div class="etags"><span class="etag">Interactive</span><span class="etag">Video Production</span><span class="etag">Pan-India</span></div>
+  <div class="timeline-wrap">
+    <div class="timeline-rail"></div>
+    <div class="timeline-node pulse" style="top:2%"></div>
+    <div class="timeline-node" style="top:27%"></div>
+    <div class="timeline-node" style="top:52%"></div>
+    <div class="timeline-node" style="top:77%"></div>
+    <div class="exp-grid" id="expGrid">
+      <div class="ei fade-up" data-n="01">
+        <div class="ep">2023 – Present</div><div class="ec">IEMA Research &amp; Development Pvt. Ltd.</div><div class="el">Kolkata, West Bengal</div>
+        <div class="er">Senior Multimedia <em>Specialist</em></div>
+        <ul class="eu">
+          <li>End-to-end multimedia production — content shoots, video editing, full post-production pipeline management.</li>
+          <li>Directed and produced promotional content, 2D animations, and long-form educational videos.</li>
+          <li>Designed brand assets — brochures, magazines, and UI/UX interfaces for digital platforms.</li>
+          <li>Built a generative AI pipeline integrating Veo 3, Higgsfield, Sora, and ElevenLabs into daily delivery.</li>
+        </ul>
+        <div class="etags"><span class="etag">Premiere Pro</span><span class="etag">Figma</span><span class="etag">Gen AI</span><span class="etag">UI/UX</span></div>
+      </div>
+      <div class="ei fade-up d1" data-n="02">
+        <div class="ep">2022 – 2023</div><div class="ec">Pathfinder Educational Centre LLP</div><div class="el">Kolkata, West Bengal</div>
+        <div class="er">Senior Video Editor &amp; <em>Graphic Designer</em></div>
+        <ul class="eu">
+          <li>Supervised all video content pipelines and led a creative team to execute high-quality digital assets.</li>
+          <li>Executed professional multi-camera shoots for podcast channels and e-learning platforms.</li>
+          <li>Managed full Udemy course post-production — editing, sound design, motion titles, and delivery.</li>
+          <li>Strategised content for marketing — reels, targeted ads, and social media creatives.</li>
+        </ul>
+        <div class="etags"><span class="etag">Multi-Camera</span><span class="etag">Podcast</span><span class="etag">Social Reels</span></div>
+      </div>
+      <div class="ei fade-up" data-n="03">
+        <div class="ep">2019 – 2020</div><div class="ec">Institute of Engineering &amp; Management</div><div class="el">Kolkata, West Bengal</div>
+        <div class="er">Video Editor &amp; <em>Broadcasting</em></div>
+        <ul class="eu">
+          <li>Managed live broadcast operations for dynamic institutional content delivery.</li>
+          <li>Filmed and edited educational and motivational video content for institutional engagement.</li>
+          <li>Designed promotional creatives and posters for marketing campaigns and event outreach.</li>
+        </ul>
+        <div class="etags"><span class="etag">Live Broadcast</span><span class="etag">Premiere Pro</span><span class="etag">Photography</span></div>
+      </div>
+      <div class="ei fade-up d1" data-n="04">
+        <div class="ep">Project</div><div class="ec">India Post</div><div class="el">New Delhi, India</div>
+        <div class="er">Digital Multimedia Specialist — <em>Museum Project</em></div>
+        <ul class="eu">
+          <li>Directed and developed digital multimedia and interactive components for the India Post national museum.</li>
+          <li>Produced interactive video presentations modernising historical exhibits for thousands of visitors nationwide.</li>
+          <li>End-to-end: scripting, production, editing, and integration into the museum's interactive infrastructure.</li>
+        </ul>
+        <div class="etags"><span class="etag">Interactive</span><span class="etag">Video Production</span><span class="etag">Pan-India</span></div>
+      </div>
     </div>
   </div>
   <div style="margin-top:3rem">
     <div class="sec-tag fade-up">AI Toolchain</div>
     <h2 class="sec-title fade-up d1" style="font-size:var(--step-3)">The generative <em>edge</em></h2>
     <div class="sec-div"></div>
-    <p style="font-size:var(--step-0);color:var(--muted);line-height:1.8;max-width:600px" class="fade-up d2">A live production pipeline using AI for generation — human hands for craft. Applied to real client work, not experiments.</p>
+    <p style="font-size:var(--step-0);color:var(--muted);line-height:1.8;max-width:600px" class="fade-up d2">A live production pipeline using AI for generation — human hands for craft. Hover a card to flip it.</p>
     <div class="ai-grid fade-up d2">
-      <div class="ai-tool"><div class="ai-ico">🎞️</div><div class="ai-name">Veo 3</div><div class="ai-cat">Video Gen</div></div>
-      <div class="ai-tool"><div class="ai-ico">🌊</div><div class="ai-name">Sora</div><div class="ai-cat">Video Gen</div></div>
-      <div class="ai-tool"><div class="ai-ico">🎬</div><div class="ai-name">Higgsfield AI</div><div class="ai-cat">Cinematic</div></div>
-      <div class="ai-tool"><div class="ai-ico">⚡</div><div class="ai-name">Grok</div><div class="ai-cat">Research</div></div>
-      <div class="ai-tool"><div class="ai-ico">🎙️</div><div class="ai-name">ElevenLabs</div><div class="ai-cat">AI Voice</div></div>
-      <div class="ai-tool"><div class="ai-ico">💬</div><div class="ai-name">Prompt Eng.</div><div class="ai-cat">IBM Certified</div></div>
-      <div class="ai-tool"><div class="ai-ico">🧠</div><div class="ai-name">Claude · Gemini</div><div class="ai-cat">Scripting</div></div>
-      <div class="ai-tool"><div class="ai-ico">🔍</div><div class="ai-name">Google AI</div><div class="ai-cat">Google Cert.</div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🎞️</div><div class="ai-name">Veo 3</div><div class="ai-cat">Video Gen</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Long-form AI video generation for storytelling and B-roll.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🌊</div><div class="ai-name">Sora</div><div class="ai-cat">Video Gen</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Cinematic scene generation and complex camera motion.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🎬</div><div class="ai-name">Higgsfield AI</div><div class="ai-cat">Cinematic</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Full AI-generated shorts — no live footage required.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">⚡</div><div class="ai-name">Grok</div><div class="ai-cat">Research</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Rapid research and ideation during pre-production.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🎙️</div><div class="ai-name">ElevenLabs</div><div class="ai-cat">AI Voice</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Voiceover generation and multilingual narration.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">💬</div><div class="ai-name">Prompt Eng.</div><div class="ai-cat">IBM Certified</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Structuring prompts for consistent, controllable output.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🧠</div><div class="ai-name">Claude · Gemini</div><div class="ai-cat">Scripting</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Script drafts, structure, and creative direction support.</div></div>
+      </div></div>
+      <div class="ai-tool"><div class="ai-flip">
+        <div class="ai-face front"><div class="ai-ico">🔍</div><div class="ai-name">Google AI</div><div class="ai-cat">Google Cert.</div></div>
+        <div class="ai-face back"><div class="ai-back-lbl">Used For</div><div class="ai-back-txt">Applied AI fundamentals across the production pipeline.</div></div>
+      </div></div>
     </div>
   </div>
 </div>
@@ -277,10 +325,115 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <div class="foot-links">
     <a href="index.html">Home</a><a href="about.html">About</a><a href="works.html">Works</a>
     <a href="experience.html">Experience</a><a href="photography.html">Photography</a>
-    <a href="design.html">Design</a><a href="contact.html">Contact</a>
+    <a href="contact.html">Contact</a>
   </div>
   <div class="foot-copy">© 2026 · Kolkata / Remote · Open to Full-Time &amp; Freelance</div>
 </div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ══ 3D PARTICLE FIELD — page banner ══
+(function(){
+  var canvas = document.getElementById('banner-canvas');
+  var host = document.querySelector('.page-banner');
+  if (!canvas || !host || typeof THREE === 'undefined') return;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, host.clientWidth / host.clientHeight, 0.1, 1000);
+  camera.position.z = 22;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(host.clientWidth, host.clientHeight);
+
+  var count = window.innerWidth < 768 ? 140 : 260;
+  var positions = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    positions[i*3]     = (Math.random() - 0.5) * 50;
+    positions[i*3 + 1] = (Math.random() - 0.5) * 24;
+    positions[i*3 + 2] = (Math.random() - 0.5) * 30;
+  }
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  var mat = new THREE.PointsMaterial({ color: 0xc8930a, size: 0.14, transparent: true, opacity: 0.45 });
+  var points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  // Orbiting wireframe torus — a "growth ring" motif for career progression
+  var torusGeo = new THREE.TorusGeometry(7, 0.35, 8, 48);
+  var torusMat = new THREE.MeshBasicMaterial({ color: 0xc8930a, wireframe: true, transparent: true, opacity: 0.08 });
+  var torus = new THREE.Mesh(torusGeo, torusMat);
+  torus.position.set(11, -1, -12);
+  torus.rotation.x = 0.6;
+  scene.add(torus);
+
+  var torus2Geo = new THREE.TorusGeometry(4, 0.22, 8, 40);
+  var torus2 = new THREE.Mesh(torus2Geo, torusMat.clone());
+  torus2.material.opacity = 0.06;
+  torus2.position.set(-10, 3, -9);
+  torus2.rotation.x = 1.1;
+  scene.add(torus2);
+
+  var clock = new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+    points.rotation.y = t * 0.015;
+    torus.rotation.z = t * 0.12;
+    torus2.rotation.z = -t * 0.09;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', function(){
+    var w = host.clientWidth, h = host.clientHeight;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+  requestAnimationFrame(function(){ canvas.classList.add('ready'); });
+})();
+
+// ══ 3D TILT — career cards ══
+(function(){
+  document.querySelectorAll('.ei').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(1000px) rotateY(' + (x * 6) + 'deg) rotateX(' + (y * -6) + 'deg) translateY(-4px)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+    });
+  });
+})();
+
+// ══ TIMELINE NODE ACTIVATION ON SCROLL ══
+(function(){
+  var nodes = document.querySelectorAll('.timeline-node');
+  var cards = document.querySelectorAll('.ei');
+  if (!nodes.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var idx = Array.prototype.indexOf.call(cards, entry.target);
+      if (entry.isIntersecting && nodes[idx]) {
+        nodes[idx].classList.add('pulse');
+      }
+    });
+  }, { threshold: 0.4 });
+  cards.forEach(function(c){ obs.observe(c); });
+})();
+
+// ══ AI TOOL FLIP — tap support for touch devices ══
+(function(){
+  document.querySelectorAll('.ai-tool').forEach(function(tool){
+    tool.addEventListener('click', function(){
+      if ('ontouchstart' in window) tool.classList.toggle('flipped');
+    });
+  });
+})();
+</script>
+
 <script>
 window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('done')},400)});
 window.addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>20)});
@@ -299,8 +452,6 @@ document.addEventListener('DOMContentLoaded',function(){
   if(!('IntersectionObserver' in window)){document.querySelectorAll('.fade-up').forEach(function(e){e.classList.add('visible')});return}
   var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
-  var sobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('.skill-fill[data-w]').forEach(function(b){b.style.width=b.dataset.w});sobs.unobserve(e.target)}})},{threshold:.25});
-  document.querySelectorAll('.skills-wrap').forEach(function(el){sobs.observe(el)});
 });
 </script>
 </body>
