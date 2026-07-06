@@ -233,26 +233,44 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 .gc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--border)}
 .gc-arr{width:24px;height:24px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--muted2);transition:all .22s}
 
-.yt-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);perspective:1200px}
-@media(min-width:640px){.yt-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.yt-grid{grid-template-columns:repeat(3,1fr)}}
-.ytc{background:var(--dark2);overflow:hidden;transition:background .2s,transform .3s cubic-bezier(.2,.8,.3,1);will-change:transform;cursor:pointer}
-.ytc:hover{background:var(--dark3)}
+.yt-strip-wrap{background:#000;padding:2.5rem 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;position:relative}
+.yt-strip-head{padding:0 1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.75rem}
+@media(min-width:768px){.yt-strip-head{padding:0 2rem 1.5rem}}
+.yt-strip-hint{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:.5rem}
+.yt-strip-hint svg{width:14px;height:14px;opacity:.5;animation:ytArrow 1.6s ease-in-out infinite}
+@keyframes ytArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.yt-track{display:flex;gap:14px;overflow-x:auto;padding:0 1.25rem 1.25rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;perspective:1200px}
+@media(min-width:768px){.yt-track{padding:0 2rem 1.25rem}}
+.yt-track::-webkit-scrollbar{height:4px}
+.yt-track::-webkit-scrollbar-thumb{background:rgba(200,147,10,.4);border-radius:2px}
+.yt-track:active{cursor:grabbing}
+.ytc{flex:0 0 auto;width:300px;scroll-snap-align:start;background:var(--dark2);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s;will-change:transform;cursor:pointer;border-radius:6px;border:1px solid var(--border)}
+@media(min-width:640px){.ytc{width:330px}}
+.ytc:hover{box-shadow:0 20px 50px -12px rgba(0,0,0,.6),0 0 0 1px var(--gold-border)}
 .ytc-thumb{position:relative;overflow:hidden;aspect-ratio:16/9}
-.ytc-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:filter .4s,transform .5s var(--ease)}
-.ytc:hover .ytc-thumb img{filter:brightness(1) saturate(1.05);transform:scale(1.04)}
-.ytc-badge{position:absolute;top:.75rem;left:.75rem;font-family:var(--f-mono);font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .6rem;border-radius:2px;backdrop-filter:blur(4px)}
-.ytc-badge.manual{background:rgba(200,147,10,.85);color:var(--dark)}
-.ytc-badge.ai{background:rgba(120,90,220,.85);color:#fff}
-.ytc-badge.podcast{background:rgba(74,222,128,.85);color:var(--dark)}
-.ytc-badge.fintech{background:rgba(59,160,220,.85);color:#fff}
-.ytc-body{padding:1.1rem 1.25rem}
-.ytc-title{font-family:var(--f-serif);font-size:.95rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.35rem}
-.ytc-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
+.ytc-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.92);transition:filter .4s,transform .6s var(--ease)}
+.ytc:hover .ytc-thumb img{filter:brightness(1) saturate(1.08);transform:scale(1.06)}
+.ytc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.ytc:hover .ytc-play{opacity:1}
+.ytc-play span{width:46px;height:46px;background:rgba(200,147,10,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:scale(.8);transition:transform .3s var(--ease)}
+.ytc:hover .ytc-play span{transform:scale(1)}
+.ytc-play svg{width:16px;height:16px;fill:var(--dark);margin-left:2px}
+.ytc-badge{position:absolute;top:.75rem;left:.75rem;font-family:var(--f-mono);font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .6rem;border-radius:2px;backdrop-filter:blur(4px);z-index:1}
+.ytc-badge.manual{background:rgba(200,147,10,.9);color:var(--dark)}
+.ytc-badge.ai{background:rgba(150,110,240,.9);color:#fff}
+.ytc-badge.podcast{background:rgba(74,222,128,.9);color:var(--dark)}
+.ytc-badge.fintech{background:rgba(59,160,220,.9);color:#fff}
+.ytc-badge.news{background:rgba(240,120,80,.9);color:var(--dark)}
+.ytc-badge.review{background:rgba(230,180,60,.9);color:var(--dark)}
+.ytc-body{padding:1.1rem 1.15rem}
+.ytc-title{font-family:var(--f-serif);font-size:.92rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.35rem}
+.ytc-desc{font-size:.7rem;color:var(--muted);line-height:1.6}
 .yt-lightbox{position:fixed;inset:0;background:rgba(6,6,5,.96);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(10px)}
 .yt-lightbox.open{display:flex}
 .yt-lightbox img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:3px;box-shadow:0 25px 70px rgba(0,0,0,.6)}
 .yt-lb-close{position:absolute;top:1.25rem;right:1.25rem;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border2);color:var(--text);font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.yt-lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border2);color:var(--text);font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.yt-lb-prev{left:1.25rem}.yt-lb-next{right:1.25rem}
 </style>
 </head>
 <body>
@@ -356,30 +374,56 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   </div>
 </div>
 
-<!-- ===== VIDEO PORTFOLIO CATEGORIES ===== -->
-<div class="sec-header-bar fade-up" style="border-top:1px solid var(--border)">
-  <div><div class="sec-tag" style="margin-bottom:.4rem">YT Thumbnail Samples</div><h2 class="sec-title" style="font-size:var(--step-2)">Thumbnails that <em>earn the click</em></h2></div>
-</div>
-<div class="yt-grid" id="ytGrid">
-  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(0)">
-    <div class="ytc-thumb"><span class="ytc-badge manual">Manually Designed</span><img src="images/works/yt-creatine.jpg" alt="4 Surprising Facts About Creatine Supplement" loading="lazy"></div>
-    <div class="ytc-body"><div class="ytc-title">Creatine Supplement — Facts Video</div><div class="ytc-desc">Hand-designed in Photoshop — real photography, custom typography, no AI generation.</div></div>
+<!-- ===== YT THUMBNAIL SAMPLES — SCROLL FILMSTRIP ===== -->
+<div class="yt-strip-wrap">
+  <div class="yt-strip-head">
+    <div><div class="sec-tag" style="margin-bottom:.4rem;color:var(--gold)">YT Thumbnail Samples</div><h2 class="sec-title" style="font-size:var(--step-2);color:var(--text)">Thumbnails that <em>earn the click</em></h2></div>
+    <span class="yt-strip-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Scroll to explore
+    </span>
   </div>
-  <div class="ytc fade-up d1" onclick="window.ytLB && window.ytLB(1)">
-    <div class="ytc-thumb"><span class="ytc-badge ai">AI-Generated</span><img src="images/works/yt-sky-fire.jpg" alt="1908: The Sky Caught Fire" loading="lazy"></div>
-    <div class="ytc-body"><div class="ytc-title">1908: The Sky Caught Fire</div><div class="ytc-desc">Fully AI-generated scene and subject — composited and typeset for a history-mystery thumbnail.</div></div>
-  </div>
-  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(2)">
-    <div class="ytc-thumb"><span class="ytc-badge fintech">Fintech</span><img src="images/works/yt-war-money.jpg" alt="War Makes Money? Hidden Truth" loading="lazy"></div>
-    <div class="ytc-body"><div class="ytc-title">War Makes Money? — Hidden Truth</div><div class="ytc-desc">Finance-explainer thumbnail — bold contrast, symbolic imagery, built for a fintech YouTube channel.</div></div>
-  </div>
-  <div class="ytc fade-up d1" onclick="window.ytLB && window.ytLB(3)">
-    <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-job-risk.jpg" alt="Job Offer at Risk - Podcast" loading="lazy"></div>
-    <div class="ytc-body"><div class="ytc-title">Job Offer at Risk? — Youth Talk Show</div><div class="ytc-desc">Podcast episode thumbnail with Prof. Alex — bold callouts designed for career-advice content.</div></div>
-  </div>
-  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(4)">
-    <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-jobless.jpg" alt="Graduated Still Jobless - Podcast" loading="lazy"></div>
-    <div class="ytc-body"><div class="ytc-title">Graduated... Still Jobless?! — Youth Culture Talks</div><div class="ytc-desc">Sticker-style cutout portraits and bold type for a youth-culture podcast series.</div></div>
+  <div class="yt-track" id="ytTrack">
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(0)">
+      <div class="ytc-thumb"><span class="ytc-badge manual">Manually Designed</span><img src="images/works/yt-creatine.jpg" alt="4 Surprising Facts About Creatine Supplement" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">Creatine Supplement — Facts Video</div><div class="ytc-desc">Hand-designed in Photoshop — real photography, custom typography, no AI generation.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(1)">
+      <div class="ytc-thumb"><span class="ytc-badge ai">AI-Generated</span><img src="images/works/yt-sky-fire.jpg" alt="1908: The Sky Caught Fire" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">1908: The Sky Caught Fire</div><div class="ytc-desc">Fully AI-generated scene and subject — composited and typeset for a history-mystery thumbnail.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(2)">
+      <div class="ytc-thumb"><span class="ytc-badge fintech">Fintech</span><img src="images/works/yt-war-money.jpg" alt="War Makes Money? Hidden Truth" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">War Makes Money? — Hidden Truth</div><div class="ytc-desc">Finance-explainer thumbnail — bold contrast, symbolic imagery, built for a fintech YouTube channel.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(3)">
+      <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-job-risk.jpg" alt="Job Offer at Risk - Podcast" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">Job Offer at Risk? — Youth Talk Show</div><div class="ytc-desc">Podcast episode thumbnail with Prof. Alex — bold callouts designed for career-advice content.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(4)">
+      <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-jobless.jpg" alt="Graduated Still Jobless - Podcast" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">Graduated... Still Jobless?! — Youth Culture Talks</div><div class="ytc-desc">Sticker-style cutout portraits and bold type for a youth-culture podcast series.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(5)">
+      <div class="ytc-thumb"><span class="ytc-badge news">News</span><img src="images/works/yt-energy-war.jpg" alt="Energy War Market Collapse" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">Energy War: Market Collapse?</div><div class="ytc-desc">Geopolitical-finance thumbnail — collaged oil rigs, crashing charts, and a world map under fire.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(6)">
+      <div class="ytc-thumb"><span class="ytc-badge fintech">Fintech</span><img src="images/works/yt-money-worthless.jpg" alt="You're Not Poor Your Money Is Worthless" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">You're Not Poor... Your Money Is Worthless</div><div class="ytc-desc">Inflation-explainer thumbnail — real price tags composited against a stressed subject.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(7)">
+      <div class="ytc-thumb"><span class="ytc-badge news">News</span><img src="images/works/yt-visa-shock.jpg" alt="US Visa Shock Harder for Indians" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">US Visa Shock — Harder for Indians?</div><div class="ytc-desc">Immigration-news thumbnail — documents, rejection stamps, and a startled subject for high CTR.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(8)">
+      <div class="ytc-thumb"><span class="ytc-badge ai">AI-Generated</span><img src="images/works/yt-ai-war-india.jpg" alt="AI War Started Can India Win" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">'AI War Started' — Can India Win?</div><div class="ytc-desc">Geopolitical-tech thumbnail — illustrated national icons and data-stream motifs across a world map.</div></div>
+    </div>
+    <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(9)">
+      <div class="ytc-thumb"><span class="ytc-badge review">Movie Review</span><img src="images/works/yt-dont-trust-her.jpg" alt="Don't Trust Her - I Am Mother Review" loading="lazy"><div class="ytc-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></div></div>
+      <div class="ytc-body"><div class="ytc-title">Don't Trust Her — "I Am Mother" Review</div><div class="ytc-desc">Film-review thumbnail — AI-generated robot-and-child scene built to tease the film's core tension.</div></div>
+    </div>
   </div>
 </div>
 
@@ -414,7 +458,9 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 
 <div class="yt-lightbox" id="ytLightbox" onclick="if(event.target===this)this.classList.remove('open')">
   <button class="yt-lb-close" onclick="document.getElementById('ytLightbox').classList.remove('open')">✕</button>
+  <button class="yt-lb-nav yt-lb-prev" onclick="ytNav(-1)">‹</button>
   <img id="ytLbImg" src="" alt="">
+  <button class="yt-lb-nav yt-lb-next" onclick="ytNav(1)">›</button>
 </div>
 
 <footer><div class="footer-inner">
@@ -477,13 +523,24 @@ var ytImages = [
   'images/works/yt-sky-fire.jpg',
   'images/works/yt-war-money.jpg',
   'images/works/yt-podcast-job-risk.jpg',
-  'images/works/yt-podcast-jobless.jpg'
+  'images/works/yt-podcast-jobless.jpg',
+  'images/works/yt-energy-war.jpg',
+  'images/works/yt-money-worthless.jpg',
+  'images/works/yt-visa-shock.jpg',
+  'images/works/yt-ai-war-india.jpg',
+  'images/works/yt-dont-trust-her.jpg'
 ];
+var ytIdx = 0;
 window.ytLB = function(idx){
+  ytIdx = idx;
   var lb = document.getElementById('ytLightbox');
   var img = document.getElementById('ytLbImg');
-  img.src = ytImages[idx];
+  img.src = ytImages[ytIdx];
   lb.classList.add('open');
+};
+window.ytNav = function(dir){
+  ytIdx = (ytIdx + dir + ytImages.length) % ytImages.length;
+  document.getElementById('ytLbImg').src = ytImages[ytIdx];
 };
 
 (function(){
