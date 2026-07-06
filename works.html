@@ -232,6 +232,27 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
 .gc-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
 .gc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--border)}
 .gc-arr{width:24px;height:24px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--muted2);transition:all .22s}
+
+.yt-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border);perspective:1200px}
+@media(min-width:640px){.yt-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.yt-grid{grid-template-columns:repeat(3,1fr)}}
+.ytc{background:var(--dark2);overflow:hidden;transition:background .2s,transform .3s cubic-bezier(.2,.8,.3,1);will-change:transform;cursor:pointer}
+.ytc:hover{background:var(--dark3)}
+.ytc-thumb{position:relative;overflow:hidden;aspect-ratio:16/9}
+.ytc-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:filter .4s,transform .5s var(--ease)}
+.ytc:hover .ytc-thumb img{filter:brightness(1) saturate(1.05);transform:scale(1.04)}
+.ytc-badge{position:absolute;top:.75rem;left:.75rem;font-family:var(--f-mono);font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:.28rem .6rem;border-radius:2px;backdrop-filter:blur(4px)}
+.ytc-badge.manual{background:rgba(200,147,10,.85);color:var(--dark)}
+.ytc-badge.ai{background:rgba(120,90,220,.85);color:#fff}
+.ytc-badge.podcast{background:rgba(74,222,128,.85);color:var(--dark)}
+.ytc-badge.fintech{background:rgba(59,160,220,.85);color:#fff}
+.ytc-body{padding:1.1rem 1.25rem}
+.ytc-title{font-family:var(--f-serif);font-size:.95rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:.35rem}
+.ytc-desc{font-size:.72rem;color:var(--muted);line-height:1.6}
+.yt-lightbox{position:fixed;inset:0;background:rgba(6,6,5,.96);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(10px)}
+.yt-lightbox.open{display:flex}
+.yt-lightbox img{max-width:100%;max-height:85vh;object-fit:contain;border-radius:3px;box-shadow:0 25px 70px rgba(0,0,0,.6)}
+.yt-lb-close{position:absolute;top:1.25rem;right:1.25rem;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border2);color:var(--text);font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
 </style>
 </head>
 <body>
@@ -328,10 +349,40 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
       <div class="work-thumb"><div class="work-ph" style="background:linear-gradient(135deg,#0A0E14,#0E1420)"><span style="font-size:2rem">📊</span><span style="font-family:var(--f-mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(200,147,10,.7);text-align:center">QGBS Finance Dashboard</span></div></div>
       <div class="work-body"><div class="work-cat">UI/UX · Figma Prototype</div><div class="work-title">QGBS Finance Dashboard</div><div class="work-desc">Financial dashboard UI — data-dense screens designed for clarity: portfolio views, transaction tables, and account summaries.</div><div class="work-footer"><div class="work-tags"><span class="work-tag">Figma</span><span class="work-tag">UI/UX</span></div><div class="work-arrow">↗</div></div></div>
     </div>
+    <div class="work-card fade-up" data-cat="video-ai">
+      <div class="work-thumb"><img class="work-img" src="images/works/yt-dark-day.jpg" alt="1780: New England's Dark Day" onerror="this.style.display='none'"><div class="work-overlay"><div class="work-overlay-icon">▶</div></div></div>
+      <div class="work-body"><div class="work-cat">YouTube · History &amp; Mystery</div><div class="work-title">1780: New England's Dark Day</div><div class="work-desc">A history-mystery narrative video exploring the unexplained darkness that fell over New England — thumbnail and edit built for maximum curiosity-driven CTR.</div><div class="work-footer"><div class="work-tags"><span class="work-tag">YouTube</span><span class="work-tag">Thumbnail Design</span></div><div class="work-arrow">↗</div></div></div>
+    </div>
   </div>
 </div>
 
 <!-- ===== VIDEO PORTFOLIO CATEGORIES ===== -->
+<div class="sec-header-bar fade-up" style="border-top:1px solid var(--border)">
+  <div><div class="sec-tag" style="margin-bottom:.4rem">YT Thumbnail Samples</div><h2 class="sec-title" style="font-size:var(--step-2)">Thumbnails that <em>earn the click</em></h2></div>
+</div>
+<div class="yt-grid" id="ytGrid">
+  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(0)">
+    <div class="ytc-thumb"><span class="ytc-badge manual">Manually Designed</span><img src="images/works/yt-creatine.jpg" alt="4 Surprising Facts About Creatine Supplement" loading="lazy"></div>
+    <div class="ytc-body"><div class="ytc-title">Creatine Supplement — Facts Video</div><div class="ytc-desc">Hand-designed in Photoshop — real photography, custom typography, no AI generation.</div></div>
+  </div>
+  <div class="ytc fade-up d1" onclick="window.ytLB && window.ytLB(1)">
+    <div class="ytc-thumb"><span class="ytc-badge ai">AI-Generated</span><img src="images/works/yt-sky-fire.jpg" alt="1908: The Sky Caught Fire" loading="lazy"></div>
+    <div class="ytc-body"><div class="ytc-title">1908: The Sky Caught Fire</div><div class="ytc-desc">Fully AI-generated scene and subject — composited and typeset for a history-mystery thumbnail.</div></div>
+  </div>
+  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(2)">
+    <div class="ytc-thumb"><span class="ytc-badge fintech">Fintech</span><img src="images/works/yt-war-money.jpg" alt="War Makes Money? Hidden Truth" loading="lazy"></div>
+    <div class="ytc-body"><div class="ytc-title">War Makes Money? — Hidden Truth</div><div class="ytc-desc">Finance-explainer thumbnail — bold contrast, symbolic imagery, built for a fintech YouTube channel.</div></div>
+  </div>
+  <div class="ytc fade-up d1" onclick="window.ytLB && window.ytLB(3)">
+    <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-job-risk.jpg" alt="Job Offer at Risk - Podcast" loading="lazy"></div>
+    <div class="ytc-body"><div class="ytc-title">Job Offer at Risk? — Youth Talk Show</div><div class="ytc-desc">Podcast episode thumbnail with Prof. Alex — bold callouts designed for career-advice content.</div></div>
+  </div>
+  <div class="ytc fade-up" onclick="window.ytLB && window.ytLB(4)">
+    <div class="ytc-thumb"><span class="ytc-badge podcast">Podcast</span><img src="images/works/yt-podcast-jobless.jpg" alt="Graduated Still Jobless - Podcast" loading="lazy"></div>
+    <div class="ytc-body"><div class="ytc-title">Graduated... Still Jobless?! — Youth Culture Talks</div><div class="ytc-desc">Sticker-style cutout portraits and bold type for a youth-culture podcast series.</div></div>
+  </div>
+</div>
+
 <div class="sec-header-bar fade-up">
   <div><div class="sec-tag" style="margin-bottom:.4rem">Video Portfolio</div><h2 class="sec-title" style="font-size:var(--step-2)">Video work, <em>categorised</em></h2></div>
   <a href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank" rel="noopener" class="browse-lnk">Browse Full Portfolio Drive ↗</a>
@@ -359,6 +410,11 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   <a class="gc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#080A10,#0E1018)">📚</div><div class="gc-body"><div class="gc-lbl">Books &amp; Editorial</div><div class="gc-name">Book &amp; Magazine Design</div><div class="gc-desc">Book covers, magazine layouts, editorial.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
   <a class="gc fade-up" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#08100E,#0C1614)">🖥️</div><div class="gc-body"><div class="gc-lbl">UI / UX</div><div class="gc-name">UI UX Design</div><div class="gc-desc">Wireframes, Figma prototypes, dashboards.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
   <a class="gc fade-up d1" href="https://drive.google.com/drive/folders/1QTeycB0kK-yyjWxFCiM-kPyThOGa136z" target="_blank"><div class="gc-thumb" style="background:linear-gradient(135deg,#100A08,#181210)">🏷️</div><div class="gc-body"><div class="gc-lbl">Brand Identity</div><div class="gc-name">Brand &amp; Identity</div><div class="gc-desc">Logos and visual identity for startups.</div><div class="gc-foot"><span style="font-family:var(--f-mono);font-size:.52rem;color:var(--muted2)">Portfolio Drive</span><div class="gc-arr">↗</div></div></div></a>
+</div>
+
+<div class="yt-lightbox" id="ytLightbox" onclick="if(event.target===this)this.classList.remove('open')">
+  <button class="yt-lb-close" onclick="document.getElementById('ytLightbox').classList.remove('open')">✕</button>
+  <img id="ytLbImg" src="" alt="">
 </div>
 
 <footer><div class="footer-inner">
@@ -415,9 +471,23 @@ footer{border-top:1px solid var(--border);padding:2rem 1.25rem;background:var(--
   requestAnimationFrame(function(){ canvas.classList.add('ready'); });
 })();
 
-// ══ 3D TILT — work cards, category cards, achievement card ══
+// ══ YT thumbnail samples lightbox ══
+var ytImages = [
+  'images/works/yt-creatine.jpg',
+  'images/works/yt-sky-fire.jpg',
+  'images/works/yt-war-money.jpg',
+  'images/works/yt-podcast-job-risk.jpg',
+  'images/works/yt-podcast-jobless.jpg'
+];
+window.ytLB = function(idx){
+  var lb = document.getElementById('ytLightbox');
+  var img = document.getElementById('ytLbImg');
+  img.src = ytImages[idx];
+  lb.classList.add('open');
+};
+
 (function(){
-  document.querySelectorAll('.work-card, .cc, .gc').forEach(function(card){
+  document.querySelectorAll('.work-card, .cc, .gc, .ytc').forEach(function(card){
     card.addEventListener('mousemove', function(e){
       var r = card.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5;
